@@ -23,6 +23,6 @@ Thank you!
 
 [<img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" width="120"/>](https://www.buymeacoffee.com/abeltibortoth)
 
-### Thank for playing!
+### Thanks for playing!
 
 [when they gonna figure that out?](https://youtu.be/YEwJk_Ga8jE?si=btcVL_gs_N86OgPf)
