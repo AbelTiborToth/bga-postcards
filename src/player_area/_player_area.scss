@@ -33,14 +33,14 @@
   player_area > .bga-animations_placeholder-grow {
     order: 3;
     animation-name: marginAnimation_playerArea_1;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
   }
 
   player_area > .bga-animations_placeholder-shrink {
     order: 3;
     animation-name: marginAnimation_playerArea_1;
     animation-direction: reverse;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
   }
 
   player_area gift_player,

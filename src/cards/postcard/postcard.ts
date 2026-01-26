@@ -117,7 +117,7 @@ export class Postcard extends GameElement {
 			this.c.souvenir[location].html,
 			this.game.c.board[0].c.stamp_supply[0].html,
 			{
-				duration: 1000,
+				duration: 800,
 				fromPlaceholder: "off",
 				toPlaceholder: "off",
 				ignoreRotation: false,
@@ -145,7 +145,7 @@ export class Postcard extends GameElement {
 	public async removeSouvenir(space: number): Promise<void> {
 		return await this.game.animationManager
 			.fadeOutAndDestroy(this.c.souvenir[space].html, this.game.c.board[0].c.stamp_supply[0].html, {
-				duration: 1000,
+				duration: 800,
 				ignoreRotation: false,
 				parallelAnimations: [
 					{
@@ -173,7 +173,7 @@ export class Postcard extends GameElement {
 	public async addStamp(location: number): Promise<void> {
 		new Stamp(this, location, location);
 		return await this.game.animationManager.slideIn(this.c.stamp[location].html, this.game.c.board[0].c.stamp_supply[0].html, {
-			duration: 1000,
+			duration: 800,
 			ignoreRotation: false,
 			parallelAnimations: [
 				{
@@ -198,7 +198,7 @@ export class Postcard extends GameElement {
 	public async removeStamp(space: number): Promise<void> {
 		return await this.game.animationManager
 			.fadeOutAndDestroy(this.c.stamp[space].html, this.game.c.board[0].c.stamp_supply[0].html, {
-				duration: 1000,
+				duration: 800,
 				ignoreRotation: false,
 				parallelAnimations: [
 					{

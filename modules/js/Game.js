@@ -1314,7 +1314,7 @@ class PostcardGuide extends GameElement {
             if (postcards[i] !== top) {
                 const e = new Postcard(this, postcards[i], false, null, supply++);
                 this.game.animationManager.slideIn(e.html, d === null ? null : d.html, {
-                    duration: 1000,
+                    duration: 800,
                 });
             }
             else {
@@ -1324,9 +1324,9 @@ class PostcardGuide extends GameElement {
         // Slide in the top card last
         const e = new Postcard(this, top, false, null, Number(supply_save));
         this.game.animationManager.slideIn(e.html, d === null ? null : d.html, {
-            duration: 1000,
+            duration: 800,
         });
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 800));
     }
 }
 
@@ -1428,7 +1428,7 @@ class PostcardPlayer extends GameElement {
         postcard.addToParent(this);
         postcard.setupFace();
         return await this.game.animationManager.slideAndAttach(postcard.html, this.html, {
-            duration: 1000,
+            duration: 800,
             parallelAnimations: [
                 {
                     keyframes: [
@@ -2238,7 +2238,7 @@ class Postcard extends GameElement {
     async addSouvenir(location) {
         new Souvenir(this, location, location);
         return await this.game.animationManager.slideIn(this.c.souvenir[location].html, this.game.c.board[0].c.stamp_supply[0].html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             toPlaceholder: "off",
             ignoreRotation: false,
@@ -2264,7 +2264,7 @@ class Postcard extends GameElement {
     async removeSouvenir(space) {
         return await this.game.animationManager
             .fadeOutAndDestroy(this.c.souvenir[space].html, this.game.c.board[0].c.stamp_supply[0].html, {
-            duration: 1000,
+            duration: 800,
             ignoreRotation: false,
             parallelAnimations: [
                 {
@@ -2291,7 +2291,7 @@ class Postcard extends GameElement {
     async addStamp(location) {
         new Stamp(this, location, location);
         return await this.game.animationManager.slideIn(this.c.stamp[location].html, this.game.c.board[0].c.stamp_supply[0].html, {
-            duration: 1000,
+            duration: 800,
             ignoreRotation: false,
             parallelAnimations: [
                 {
@@ -2315,7 +2315,7 @@ class Postcard extends GameElement {
     async removeStamp(space) {
         return await this.game.animationManager
             .fadeOutAndDestroy(this.c.stamp[space].html, this.game.c.board[0].c.stamp_supply[0].html, {
-            duration: 1000,
+            duration: 800,
             ignoreRotation: false,
             parallelAnimations: [
                 {
@@ -2526,7 +2526,7 @@ class PostcardSupply extends GameElement {
         postcard.addToParent(this);
         this.rearrangeSupplyRow();
         return await this.game.animationManager.slideAndAttach(postcard.html, this.html, {
-            duration: 1000,
+            duration: 800,
             parallelAnimations: [
                 {
                     keyframes: [
@@ -2584,7 +2584,7 @@ class PostcardSupply extends GameElement {
             const postcard = this.c.postcard[i];
             if (postcard.args.supply !== 1) {
                 this.game.animationManager.fadeOutAndDestroy(postcard.html, null, {
-                    duration: 1000,
+                    duration: 800,
                     parallelAnimations: [
                         {
                             keyframes: [{ scale: '1' }, { scale: '0' }],
@@ -2594,7 +2594,7 @@ class PostcardSupply extends GameElement {
                 delete this.c.postcard[i];
             }
         }
-        return new Promise((resolve) => setTimeout(resolve, 1000));
+        return new Promise((resolve) => setTimeout(resolve, 800));
     }
     /**
      * Refill the postcard supply with new card
@@ -2618,7 +2618,7 @@ class PostcardSupply extends GameElement {
             this.addPostcardToTop(top);
         }
         this.rearrangeSupplyRow();
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
     }
     /**
      * Add a postcard to the top position of the supply
@@ -2893,7 +2893,7 @@ class PlayerBoard extends GameElement {
         // Add camp to board and animate
         camp.addToParent(this, location);
         return this.game.animationManager.slideAndAttach(camp.html, this.html, {
-            duration: 1000,
+            duration: 800,
             parallelAnimations: [
                 {
                     keyframes: [{ rotate: '0deg' }, { rotate: `${rotate}deg` }],
@@ -3632,7 +3632,7 @@ class Hand extends GameElement {
         for (const i in travels) {
             const travel = this.c.travel[travels[i]];
             this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.c.board[0].c.stamp_supply[0].html, {
-                duration: 1000,
+                duration: 800,
                 parallelAnimations: [
                     {
                         keyframes: [{ scale: '1' }, { scale: '0' }],
@@ -3641,7 +3641,7 @@ class Hand extends GameElement {
             });
             delete this.c.travel[travels[i]];
         }
-        return new Promise((resolve) => setTimeout(resolve, 1000));
+        return new Promise((resolve) => setTimeout(resolve, 800));
     }
     /**
      * Restore discarded Travel cards (undo operation)
@@ -3655,7 +3655,7 @@ class Hand extends GameElement {
         for (const i in travels) {
             new Travel(this, travels[i]);
         }
-        return new Promise((resolve) => setTimeout(resolve, 1000));
+        return new Promise((resolve) => setTimeout(resolve, 800));
     }
     /**
      * Animate adding a Travel card to the hand
@@ -3670,7 +3670,7 @@ class Hand extends GameElement {
     addTravel(travel) {
         travel.addToParent(this);
         return this.game.animationManager.slideAndAttach(travel.html, this.html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             parallelAnimations: [
                 {
@@ -3694,7 +3694,7 @@ class Hand extends GameElement {
     addTravelFromDeck(travel) {
         travel.addToParent(this);
         return this.game.animationManager.slideAndAttach(travel.html, this.html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             parallelAnimations: [
                 {
@@ -4176,7 +4176,7 @@ class Board extends GameElement {
      */
     async moveBiker(player_id, region) {
         this.c.biker[player_id].move(region);
-        return await new Promise((resolve) => setTimeout(resolve, 1000));
+        return await new Promise((resolve) => setTimeout(resolve, 800));
     }
     // ========== Campsite Management Methods ==========
     /**
@@ -4232,7 +4232,7 @@ class Board extends GameElement {
                 break;
         }
         await this.game.animationManager.slideAndAttach(camp.html, this.html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             toPlaceholder: "off",
             parallelAnimations: [
@@ -4272,7 +4272,7 @@ class Board extends GameElement {
         new Travel(this, travel, location);
         this.c.travel[travel].setArg("deck", true);
         await this.game.animationManager.slideIn(this.c.travel[travel].html, this.game.c.board[0].c.travel_deck[0].html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             toPlaceholder: "off",
             ignoreRotation: false,
@@ -4297,7 +4297,7 @@ class Board extends GameElement {
         travel.addToParent(this);
         travel.setArg("location", location);
         await this.game.animationManager.slideAndAttach(travel.html, this.html, {
-            duration: 1000,
+            duration: 800,
             toPlaceholder: "off",
             parallelAnimations: [
                 {
@@ -4344,7 +4344,7 @@ class Board extends GameElement {
         else if (location === 3)
             rotate = "-4";
         await this.game.animationManager.slideIn(this.c.gift[gift].html, this.game.c.board[0].c.gift_deck[0].html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             toPlaceholder: "off",
             ignoreRotation: false,
@@ -4367,7 +4367,7 @@ class Board extends GameElement {
      */
     addGiftFromDeck(gift, location) {
         return this.game.animationManager.slideAndAttach(gift.html, this.html, {
-            duration: 1000,
+            duration: 800,
             fromPlaceholder: "off",
             parallelAnimations: [
                 {
@@ -4715,8 +4715,8 @@ class GiftPlayer extends GameElement {
     addGift(gift) {
         gift.addToParent(this);
         return this.game.animationManager.slideAndAttach(gift.html, this.html, {
-            duration: 1000,
-            fromPlaceholder: "off",
+            duration: 800,
+            //fromPlaceholder: "off",
             parallelAnimations: [
                 {
                     keyframes: [{ rotate: '-5deg' }, { rotate: '0deg' }],
@@ -4999,8 +4999,8 @@ class Notif {
         }
         else {
             delete this.game.c.board[0].c.travel[args.travel];
-            await this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.bga.gameui.getPlayerPanelElement(args.player_id), {
-                duration: 1000,
+            await this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.bga.playerPanels.getElement(args.player_id), {
+                duration: 800,
             });
         }
     }
@@ -5036,7 +5036,7 @@ class Notif {
         if (this.game.bga.gameui.player_id !== args.player_id) {
             const element = document.createElement('travel_deck');
             element.setAttribute("type", "0");
-            await this.game.animationManager.slideFloatingElement(element, this.game.c.board[0].c.travel_deck[0].html, this.game.bga.gameui.getPlayerPanelElement(args.player_id), { duration: 1000, parallelAnimations: [{ keyframes: [{ opacity: '1' }, { opacity: '0' }] }] });
+            await this.game.animationManager.slideFloatingElement(element, this.game.c.board[0].c.travel_deck[0].html, this.game.bga.playerPanels.getElement(args.player_id), { duration: 800, parallelAnimations: [{ keyframes: [{ opacity: '1' }, { opacity: '0' }] }] });
         }
     }
     /**
@@ -5064,8 +5064,8 @@ class Notif {
     async notif_send(args) {
         const postcard = this.game.c.player_area[args.player_id].c.postcard_player[0].c.postcard[args.postcard];
         delete this.game.c.player_area[args.player_id].c.postcard_player[0].c.postcard[args.postcard];
-        await this.game.animationManager.fadeOutAndDestroy(postcard.html, this.game.bga.gameui.getPlayerPanelElement(args.player_id), {
-            duration: 1000,
+        await this.game.animationManager.fadeOutAndDestroy(postcard.html, this.game.bga.playerPanels.getElement(args.player_id), {
+            duration: 800,
             ignoreRotation: false,
             parallelAnimations: [
                 {
@@ -5095,20 +5095,20 @@ class Notif {
     }
     // ========== Bonus and End Game Notifications ==========
     /**
+     * Handles end bonus notification - moves end game bonus to player area
+     * @param args - Contains player_id
+    */
+    async notif_endBonus(args) {
+        this.game.c.board[0].c.end_game_bonus[0].addToParent(this.game.c.player_area[args.player_id]);
+        await this.game.animationManager.slideAndAttach(this.game.c.player_area[args.player_id].c.end_game_bonus[0].html, this.game.c.player_area[args.player_id].html, { duration: 800 });
+    }
+    /**
      * Handles undo end bonus notification - returns end game bonus to board
      * @param args - Contains player_id
      */
     async notif_undoEndBonus(args) {
         this.game.c.player_area[args.player_id].c.end_game_bonus[0].addToParent(this.game.c.board[0]);
-        await this.game.animationManager.slideAndAttach(this.game.c.board[0].c.end_game_bonus[0].html, this.game.c.board[0].html, { duration: 1000 });
-    }
-    /**
-     * Handles end bonus notification - moves end game bonus to player area
-     * @param args - Contains player_id
-     */
-    async notif_endBonus(args) {
-        this.game.c.board[0].c.end_game_bonus[0].addToParent(this.game.c.player_area[args.player_id]);
-        await this.game.animationManager.slideAndAttach(this.game.c.player_area[args.player_id].c.end_game_bonus[0].html, this.game.c.player_area[args.player_id].html, { duration: 1000 });
+        await this.game.animationManager.slideAndAttach(this.game.c.board[0].c.end_game_bonus[0].html, this.game.c.board[0].html, { duration: 800 });
     }
     /**
      * Handles end bonus scoring notification - displays scoring animation for bonus
@@ -5139,6 +5139,11 @@ class Notif {
      * @param args - Contains player_id, player_color, and amount
      */
     async notif_scoreItinerary(args) {
+        this.game.c.player_area[args.player_id].html?.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+        await this.game.bga.gameui.wait(1000);
         await this.game.animationManager.displayScoring(this.game.c.player_area[args.player_id].c.itinerary[0].html, args.n, args.player_color);
     }
     /**

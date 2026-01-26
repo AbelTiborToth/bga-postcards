@@ -135,7 +135,7 @@ export class Hand extends GameElement {
 		for (const i in travels) {
 			const travel: Travel = this.c.travel[travels[i]] as Travel;
 			this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.c.board[0].c.stamp_supply[0].html, {
-				duration: 1000,
+				duration: 800,
 				parallelAnimations: [
 					{
 						keyframes: [{ scale: '1' }, { scale: '0' }],
@@ -144,7 +144,7 @@ export class Hand extends GameElement {
 			});
 			delete this.c.travel[travels[i]];
 		}
-		return new Promise((resolve) => setTimeout(resolve, 1000));
+		return new Promise((resolve) => setTimeout(resolve, 800));
 	}
 
 	/**
@@ -159,7 +159,7 @@ export class Hand extends GameElement {
 		for (const i in travels) {
 			new Travel(this, travels[i]);
 		}
-		return new Promise((resolve) => setTimeout(resolve, 1000));
+		return new Promise((resolve) => setTimeout(resolve, 800));
 	}
 
 	/**
@@ -175,7 +175,7 @@ export class Hand extends GameElement {
 	public addTravel(travel: Travel): Promise<void> {
 		travel.addToParent(this);
 		return this.game.animationManager.slideAndAttach(travel.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			fromPlaceholder: "off",
 			parallelAnimations: [
 				{
@@ -200,7 +200,7 @@ export class Hand extends GameElement {
 	public addTravelFromDeck(travel: Travel): Promise<void> {
 		travel.addToParent(this);
 		return this.game.animationManager.slideAndAttach(travel.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			fromPlaceholder: "off",
 			parallelAnimations: [
 				{

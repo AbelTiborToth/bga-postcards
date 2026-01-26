@@ -84,7 +84,7 @@ export class PostcardGuide extends GameElement {
 			if (postcards[i] !== top) {
 				const e = new Postcard(this, postcards[i], false, null, supply++);
 				this.game.animationManager.slideIn(e.html, d === null ? null : d.html, {
-					duration: 1000,
+					duration: 800,
 				});
 			} else {
 				supply_save = supply++;
@@ -94,9 +94,9 @@ export class PostcardGuide extends GameElement {
 		// Slide in the top card last
 		const e = new Postcard(this, top, false, null, Number(supply_save));
 		this.game.animationManager.slideIn(e.html, d === null ? null : d.html, {
-			duration: 1000,
+			duration: 800,
 		});
 
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 800));
 	}
 }

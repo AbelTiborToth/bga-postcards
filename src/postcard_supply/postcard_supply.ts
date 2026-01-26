@@ -94,7 +94,7 @@ export class PostcardSupply extends GameElement {
 		this.rearrangeSupplyRow();
 
 		return await this.game.animationManager.slideAndAttach(postcard.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			parallelAnimations: [
 				{
 					keyframes: [
@@ -161,7 +161,7 @@ export class PostcardSupply extends GameElement {
 			const postcard: Postcard = this.c.postcard[i] as Postcard;
 			if (postcard.args.supply !== 1) {
 				this.game.animationManager.fadeOutAndDestroy(postcard.html, null, {
-					duration: 1000,
+					duration: 800,
 					parallelAnimations: [
 						{
 							keyframes: [{ scale: '1' }, { scale: '0' }],
@@ -172,7 +172,7 @@ export class PostcardSupply extends GameElement {
 			}
 		}
 
-		return new Promise((resolve) => setTimeout(resolve, 1000));
+		return new Promise((resolve) => setTimeout(resolve, 800));
 	}
 
 	/**
@@ -199,7 +199,7 @@ export class PostcardSupply extends GameElement {
 		}
 
 		this.rearrangeSupplyRow();
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 500));
 	}
 
 	/**

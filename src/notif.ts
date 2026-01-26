@@ -240,8 +240,8 @@ export class Notif {
 			await (this.game.c.player_area[args.player_id].c.hand[0] as Hand).addTravel(travel);
 		} else {
 			delete this.game.c.board[0].c.travel[args.travel];
-			await this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.bga.gameui.getPlayerPanelElement(args.player_id), {
-				duration: 1000,
+			await this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.bga.playerPanels.getElement(args.player_id), {
+				duration: 800,
 			});
 		}
 	}
@@ -286,8 +286,8 @@ export class Notif {
 			await this.game.animationManager.slideFloatingElement(
 				element,
 				(this.game.c.board[0].c.travel_deck[0] as TravelDeck).html,
-				this.game.bga.gameui.getPlayerPanelElement(args.player_id),
-				{ duration: 1000, parallelAnimations: [{ keyframes: [{ opacity: '1' }, { opacity: '0' }] }] }
+				this.game.bga.playerPanels.getElement(args.player_id),
+				{ duration: 800, parallelAnimations: [{ keyframes: [{ opacity: '1' }, { opacity: '0' }] }] }
 			);
 		}
 	}
@@ -323,8 +323,8 @@ export class Notif {
 	public async notif_send(args: { player_id: number; postcard: number }): Promise<void> {
 		const postcard: Postcard = this.game.c.player_area[args.player_id].c.postcard_player[0].c.postcard[args.postcard] as Postcard;
 		delete this.game.c.player_area[args.player_id].c.postcard_player[0].c.postcard[args.postcard];
-		await this.game.animationManager.fadeOutAndDestroy(postcard.html, this.game.bga.gameui.getPlayerPanelElement(args.player_id), {
-			duration: 1000,
+		await this.game.animationManager.fadeOutAndDestroy(postcard.html, this.game.bga.playerPanels.getElement(args.player_id), {
+			duration: 800,
 			ignoreRotation: false,
 			parallelAnimations: [
 				{
@@ -370,6 +370,20 @@ export class Notif {
 
 	// ========== Bonus and End Game Notifications ==========
 
+	
+	/**
+	 * Handles end bonus notification - moves end game bonus to player area
+	 * @param args - Contains player_id
+	*/
+	public async notif_endBonus(args: { player_id: number }): Promise<void> {
+		this.game.c.board[0].c.end_game_bonus[0].addToParent(this.game.c.player_area[args.player_id]);
+		await this.game.animationManager.slideAndAttach(
+			(this.game.c.player_area[args.player_id].c.end_game_bonus[0] as EndGameBonus).html,
+			(this.game.c.player_area[args.player_id] as PlayerArea).html,
+			{ duration: 800 }
+		);
+	}
+	
 	/**
 	 * Handles undo end bonus notification - returns end game bonus to board
 	 * @param args - Contains player_id
@@ -379,20 +393,7 @@ export class Notif {
 		await this.game.animationManager.slideAndAttach(
 			(this.game.c.board[0].c.end_game_bonus[0] as EndGameBonus).html,
 			(this.game.c.board[0] as PlayerArea).html,
-			{ duration: 1000 }
-		);
-	}
-
-	/**
-	 * Handles end bonus notification - moves end game bonus to player area
-	 * @param args - Contains player_id
-	 */
-	public async notif_endBonus(args: { player_id: number }): Promise<void> {
-		this.game.c.board[0].c.end_game_bonus[0].addToParent(this.game.c.player_area[args.player_id]);
-		await this.game.animationManager.slideAndAttach(
-			(this.game.c.player_area[args.player_id].c.end_game_bonus[0] as EndGameBonus).html,
-			(this.game.c.player_area[args.player_id] as PlayerArea).html,
-			{ duration: 1000 }
+			{ duration: 800 }
 		);
 	}
 
@@ -457,6 +458,11 @@ export class Notif {
 		player_color: string;
 		n: number;
 	}): Promise<void> {
+		this.game.c.player_area[args.player_id].html?.scrollIntoView({
+  			behavior: "smooth",
+			block: "center"
+		});
+		await this.game.bga.gameui.wait(1000);
 		await this.game.animationManager.displayScoring(
 			(this.game.c.player_area[args.player_id].c.itinerary[0] as Itinerary).html,
 			args.n,

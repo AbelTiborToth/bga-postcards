@@ -70,7 +70,7 @@
   
   postcard_supply,
   postcard_guide {
-    postcard {transition: margin 1s, left 1s, box-shadow 0.2s;}
+    postcard {transition: margin 1s, left 0.8s, box-shadow 0.2s;}
     
     postcard[supply="1"] {
       position: absolute;

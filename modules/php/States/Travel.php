@@ -60,6 +60,14 @@ class Travel extends GameState
 		return $args;
 	}
 
+	function onEnteringState(int $active_player_id, array $args): ?string
+	{
+		if ($this->game->isLastRound()) {
+			return Confirm::class;
+		}
+		return null;
+	}
+
 	/**
 	 * Player takes a travel card from the supply row.
 	 *

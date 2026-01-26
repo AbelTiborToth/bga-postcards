@@ -217,7 +217,7 @@ export class Board extends GameElement {
 	 */
 	public async moveBiker(player_id: number, region: number): Promise<void> {
 		(this.c.biker[player_id] as Biker).move(region);
-		return await new Promise((resolve) => setTimeout(resolve, 1000));
+		return await new Promise((resolve) => setTimeout(resolve, 800));
 	}
 
 	// ========== Campsite Management Methods ==========
@@ -281,7 +281,7 @@ export class Board extends GameElement {
 		}
 
 		await this.game.animationManager.slideAndAttach(camp.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			fromPlaceholder: "off",
 			toPlaceholder: "off",
 			parallelAnimations: [
@@ -328,7 +328,7 @@ export class Board extends GameElement {
 			this.c.travel[travel].html,
 			this.game.c.board[0].c.travel_deck[0].html,
 			{
-				duration: 1000,
+				duration: 800,
 				fromPlaceholder: "off",
 				toPlaceholder: "off",
 				ignoreRotation: false,
@@ -355,7 +355,7 @@ export class Board extends GameElement {
 		travel.addToParent(this);
 		travel.setArg("location", location);
 		await this.game.animationManager.slideAndAttach(travel.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			toPlaceholder: "off",
 			parallelAnimations: [
 				{
@@ -407,7 +407,7 @@ export class Board extends GameElement {
 			this.c.gift[gift].html,
 			this.game.c.board[0].c.gift_deck[0].html,
 			{
-				duration: 1000,
+				duration: 800,
 				fromPlaceholder: "off",
 				toPlaceholder: "off",
 				ignoreRotation: false,
@@ -432,7 +432,7 @@ export class Board extends GameElement {
 	 */
 	public addGiftFromDeck(gift: Gift, location: number): Promise<void> {
 		return this.game.animationManager.slideAndAttach(gift.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			fromPlaceholder: "off",
 			parallelAnimations: [
 				{

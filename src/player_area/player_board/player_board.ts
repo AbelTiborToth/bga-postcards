@@ -97,7 +97,7 @@ export class PlayerBoard extends GameElement {
 		// Add camp to board and animate
 		camp.addToParent(this, location);
 		return this.game.animationManager.slideAndAttach(camp.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			parallelAnimations: [
 				{
 					keyframes: [{ rotate: '0deg' }, { rotate: `${rotate}deg` }],

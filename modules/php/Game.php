@@ -291,10 +291,5 @@ class Game extends Table
 	 * @param int $from_version
 	 * @return void
 	 */
-	public function upgradeTableDb($from_version): void {
-		// TODO: delete this when every table has been migrated to newer version
-		if($from_version <= 2601100000){ 
-			$this->dbQuery("DELETE FROM gamelog WHERE `cancel` = 1");
-		}
-	}
+	public function upgradeTableDb($from_version): void {}
 }

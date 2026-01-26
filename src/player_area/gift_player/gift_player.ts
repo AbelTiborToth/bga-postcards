@@ -47,8 +47,8 @@ export class GiftPlayer extends GameElement {
 	public addGift(gift: Gift): Promise<void> {
 		gift.addToParent(this);
 		return this.game.animationManager.slideAndAttach(gift.html, this.html, {
-			duration: 1000,
-			fromPlaceholder: "off",
+			duration: 800,
+			//fromPlaceholder: "off",
 			parallelAnimations: [
 				{
 					keyframes: [{ rotate: '-5deg' }, { rotate: '0deg' }],

@@ -113,7 +113,7 @@ export class PostcardPlayer extends GameElement {
 		postcard.setupFace();
 
 		return await this.game.animationManager.slideAndAttach(postcard.html, this.html, {
-			duration: 1000,
+			duration: 800,
 			parallelAnimations: [
 				{
 					keyframes: [
