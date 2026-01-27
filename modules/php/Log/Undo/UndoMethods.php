@@ -106,7 +106,7 @@ trait UndoMethods
 		switch ($gift_type) {
 			case GiftType::Map: break;
 			case GiftType::Car: $this->moveBonusCounter->inc(-3); break;
-			case GiftType::Stamp: $this->stampBonusCounter->set(0); break;
+			case GiftType::Stamp: if ($this->stampBonusCounter->get() !== 0) $this->stampBonusCounter->set(-2); break;
 			default: throw new BgaUserException('Action.php [actActionGift] Not valid gift type');
 		}
 		// Notify client
@@ -173,7 +173,7 @@ trait UndoMethods
 		switch ($camp) {
 			case 5: if ($this->tableOptions->get(100) === 1) $this->postcardBonusCounter->inc(-1); break;
 			case 7: if ($this->tableOptions->get(100) === 1) $this->moveBonusCounter->inc(-1); break;
-			case 9: if ($this->tableOptions->get(100) === 1) $this->stampBonusCounter->inc(-1); break;
+			case 9: if ($this->tableOptions->get(100) === 1 && $this->stampBonusCounter->get() !== 0) $this->stampBonusCounter->inc(-1); break;
 			case 11: $this->playerScore->inc($active_player_id, -1); break;
 			case 12: $this->playerScore->inc($active_player_id, -3); break;
 			case 13: $this->playerScore->inc($active_player_id, -7); break;
@@ -216,7 +216,7 @@ trait UndoMethods
 		switch ($effect) {
 			case 1: $this->moveBonusCounter->inc(-1); break;
 			case 2: $this->postcardBonusCounter->inc(-1); break;
-			case 3: $this->stampBonusCounter->inc(-1); break;
+			case 3: if ($this->stampBonusCounter->get() !== 0) $this->stampBonusCounter->inc(-1); break;
 		}
 		// Move to the next state
 		return Star::class;

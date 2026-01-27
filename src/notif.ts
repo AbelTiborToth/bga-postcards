@@ -239,11 +239,13 @@ export class Notif {
 		if (this.game.bga.gameui.player_id === args.player_id) {
 			await (this.game.c.player_area[args.player_id].c.hand[0] as Hand).addTravel(travel);
 		} else {
-			delete this.game.c.board[0].c.travel[args.travel];
 			await this.game.animationManager.fadeOutAndDestroy(travel.html, this.game.bga.playerPanels.getElement(args.player_id), {
 				duration: 800,
 			});
+			delete this.game.c.board[0].c.travel[args.travel];
 		}
+		console.log(this.game.c.board[0].c.travel);
+		
 	}
 
 	/**
@@ -253,6 +255,7 @@ export class Notif {
 	public async notif_gift(args: { player_id: number; gift: number }): Promise<void> {
 		(this.game.c.board[0] as Board).activateAllGifts(false);
 		const gift: Gift = this.game.c.board[0].c.gift[args.gift] as Gift;
+		delete this.game.c.board[0].c.gift[args.gift];
 		await (this.game.c.player_area[args.player_id].c.gift_player[0] as GiftPlayer).addGift(gift);
 	}
 
@@ -271,6 +274,8 @@ export class Notif {
 		} else {
 			await (this.game.c.board[0] as Board).refillTravel(args.travel, args.location);
 		}
+		console.log(this.game.c.board[0].c.travel);
+
 	}
 
 	/**
