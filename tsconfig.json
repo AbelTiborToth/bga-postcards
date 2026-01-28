@@ -9,10 +9,8 @@
     "strict": true
   },
   "include": [
-    "*.d.ts",
     "src/**/*.d.ts",
     "src/*.ts",
-    "src/notif.ts",
     "src/**/*.ts",
   ]
 }

@@ -94,7 +94,7 @@
     },
     "itinerary_points": {
       "id": 27,
-      "name": "Number of points from Gift cards",
+      "name": "Number of points from Itinerary card",
       "type": "int"
     },
     "end_bonus_points": {
