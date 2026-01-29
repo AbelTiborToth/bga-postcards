@@ -2245,9 +2245,9 @@ class Postcard extends GameElement {
             parallelAnimations: [
                 {
                     keyframes: [
-                        { transform: 'rotate(720deg)', opacity: 0 },
-                        { transform: 'rotate(360deg)', opacity: 1 },
-                        { transform: 'rotate(0deg)', opacity: 1 },
+                        { transform: 'rotate(630deg)', opacity: 0 },
+                        { transform: 'rotate(270deg)', opacity: 1 },
+                        { transform: 'rotate(-90deg)', opacity: 1 },
                     ],
                 },
             ],
@@ -2269,9 +2269,9 @@ class Postcard extends GameElement {
             parallelAnimations: [
                 {
                     keyframes: [
-                        { transform: 'rotate(0deg)' },
-                        { transform: 'rotate(360deg)' },
-                        { transform: 'rotate(720deg)' },
+                        { transform: 'rotate(-90deg)' },
+                        { transform: 'rotate(270deg)' },
+                        { transform: 'rotate(630deg)' },
                     ],
                 },
             ],
