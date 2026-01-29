@@ -8,7 +8,7 @@
     
     @include postcard();
     
-    transition: margin 1s, rotate 1s, transform 1s;
+    transition: margin 1s, transform 1s;
     
     @include sprite(6, 9, $postcard_height, $postcard_width);
     
@@ -41,8 +41,7 @@
     
     &[face="true"] {
       margin: ($card-margin / 2) ($card-margin / 2) ($card-margin / 2) ($card-margin / 2) !important;
-      rotate: 0deg;
-      transform: rotateX(0deg);
+      transform: rotate(0deg) rotateX(0deg);
 
       &:before {z-index: -2};
       &:after {z-index: -1};
@@ -54,8 +53,7 @@
         (($postcard_height - $postcard_width) / 2)
         (((-($postcard_height - $postcard_width))) / 2)
         (($postcard_height - $postcard_width) / 2);
-      rotate: 90deg;
-      transform: rotateX(180deg);
+      transform: rotate(90deg) rotateX(180deg);
 
       &:before {z-index: -1};
       &:after {z-index: -2};

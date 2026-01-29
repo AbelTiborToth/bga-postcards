@@ -215,7 +215,7 @@ class Game extends Table
 		// Getting table option infos
 		$result["player_board_side"] = $this->tableOptions->get(100) === 1;
 		// Getting player infos
-		$players = $this->getCollectionFromDb("SELECT player_id id, player_no no, player_score score, itinerary, biker FROM player");
+		$players = $this->getCollectionFromDb("SELECT player_id id, player_no, player_score score, itinerary, biker FROM player");
 		$result["players"] = array_map(function ($player) {return array_map('intval', $player);}, $players); 
 		$end_bonus = $this->globals->get("end_bonus");
 		if ($end_bonus !== null) $result["end_bonus"] = $end_bonus;

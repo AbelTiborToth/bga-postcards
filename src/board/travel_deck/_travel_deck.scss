@@ -6,7 +6,7 @@
     @include absolute();
     top: 769px;
     left: 111px;
-    rotate: 1deg;
+    transform: rotate(1deg);
     
     @include card();
     
@@ -48,7 +48,7 @@
     
     top: 6px;
     left: -6px;
-    rotate: 1deg;
+    transform: rotate(1deg);
     
     height: $card_height;
     width: $card_width;
@@ -73,7 +73,7 @@
     
     top: 3px;
     left: -3px;
-    rotate: 1deg;
+    transform: rotate(1deg);
     
     height: $card_height;
     width: $card_width;

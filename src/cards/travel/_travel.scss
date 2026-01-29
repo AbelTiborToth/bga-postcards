@@ -9,7 +9,7 @@
     @include card();
     @include sprite(4, 3, $card_height, $card_width);
     
-    transition: transform 0.2s, rotate 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     
     &[active="true"] {
       box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
@@ -23,11 +23,11 @@
   
   board travel {
     &[deck="true"] {top: 769px; left: 111px;}
-    &[location="1"] {top: $board_size * 0.855; left: $board_size * 0.214; rotate: 0.5deg;}
-    &[location="2"] {top: $board_size * 0.857; left: $board_size * 0.302; rotate: 0.5deg;}
-    &[location="3"] {top: $board_size * 0.8594; left: $board_size * 0.463; rotate: 0.5deg;}
-    &[location="4"] {top: $board_size * 0.86; left: $board_size * 0.5536; rotate: 0.5deg;}
-    &[location="5"] {top: $board_size * 0.861; left: $board_size * 0.6436; rotate: 0.5deg;}
+    &[location="1"] {top: $board_size * 0.855; left: $board_size * 0.214; transform: rotate(0.5deg);}
+    &[location="2"] {top: $board_size * 0.857; left: $board_size * 0.302; transform: rotate(0.5deg);}
+    &[location="3"] {top: $board_size * 0.8594; left: $board_size * 0.463; transform: rotate(0.5deg);}
+    &[location="4"] {top: $board_size * 0.86; left: $board_size * 0.5536; transform: rotate(0.5deg);}
+    &[location="5"] {top: $board_size * 0.861; left: $board_size * 0.6436; transform: rotate(0.5deg);}
 
   }
   

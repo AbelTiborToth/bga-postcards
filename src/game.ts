@@ -300,7 +300,7 @@ export class Game {
 			);
 			
 			// First player marker
-			if (player.no === 1) {
+			if (player.player_no === 1) {
 				const firstPlayerMarker = document.createElement('first_player_marker');
 				firstPlayerMarker.id = "first_player_marker";
 				playerElement.appendChild(firstPlayerMarker);
@@ -357,13 +357,11 @@ export class Game {
 		// Other players' areas
 		const otherPlayers = this.getOrderedOtherPlayers(game_data.players);
 		for (const player of otherPlayers) {
-			if (player.id !== this.bga.gameui.player_id) {
-				new PlayerArea(this, player.id, {
-					...player,
-					end_bonus: game_data.end_bonus,
-					player_board_side: game_data.player_board_side
-				});
-			}
+			new PlayerArea(this, player.id, {
+				...player,
+				end_bonus: game_data.end_bonus,
+				player_board_side: game_data.player_board_side
+			});
 		}
 		
 		// Easter egg
@@ -543,11 +541,13 @@ export class Game {
 	 * @private
 	 */
 	private getOrderedOtherPlayers(players: Record<number, Player>): Player[] {
-		const ordered = Object.values(players).sort((a: any, b: any) => a.player_no - b.player_no);
-		const currentPlayerIndex = ordered.findIndex((p: any) => p.id === this.bga.gameui.player_id);
+		let ordered = Object.values(players).sort((a: Player, b: Player) => a.player_no - b.player_no);
 		
-		return currentPlayerIndex > 0
-			? [...ordered.slice(currentPlayerIndex), ...ordered.slice(0, currentPlayerIndex)]
-			: ordered;
+        if (!this.bga.players.isCurrentPlayerSpectator()) {
+            const currentPlayerIndex = ordered.findIndex((p: Player) => p.id === this.bga.gameui.player_id);
+            ordered = [...ordered.slice(currentPlayerIndex), ...ordered.slice(0, currentPlayerIndex)];
+            return ordered.filter((p: Player) => p.id !== this.bga.gameui.player_id);
+        }
+		else return ordered;
 	}
 }

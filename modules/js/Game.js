@@ -2896,7 +2896,7 @@ class PlayerBoard extends GameElement {
             duration: 800,
             parallelAnimations: [
                 {
-                    keyframes: [{ rotate: '0deg' }, { rotate: `${rotate}deg` }],
+                    keyframes: [{ transform: 'rotate(0deg)' }, { transform: `rotate(${rotate}deg)` }],
                 },
             ],
         });
@@ -3674,7 +3674,7 @@ class Hand extends GameElement {
             fromPlaceholder: "off",
             parallelAnimations: [
                 {
-                    keyframes: [{ rotate: '0.5deg' }, { rotate: '0deg' }],
+                    keyframes: [{ transform: 'rotate(0.5deg)' }, { transform: 'rotate(0deg)' }],
                 },
             ],
         });
@@ -3699,8 +3699,8 @@ class Hand extends GameElement {
             parallelAnimations: [
                 {
                     keyframes: [
-                        { transform: 'rotateY(180deg)', rotate: '1deg' },
-                        { transform: 'rotateY(0deg)', rotate: '0deg' },
+                        { transform: 'rotateY(180deg) rotate(1deg)' },
+                        { transform: 'rotateY(0deg) rotate(0deg)' },
                     ],
                 },
             ],
@@ -5455,7 +5455,7 @@ class Game {
             playerElement.appendChild(sentPostcardsIcon);
             this.bga.gameui.addTooltipHtml(`sent_postcards_${player.id}`, `<h3>${_("Number of sent Postcards")}</h3>`);
             // First player marker
-            if (player.no === 1) {
+            if (player.player_no === 1) {
                 const firstPlayerMarker = document.createElement('first_player_marker');
                 firstPlayerMarker.id = "first_player_marker";
                 playerElement.appendChild(firstPlayerMarker);
@@ -5502,13 +5502,11 @@ class Game {
         // Other players' areas
         const otherPlayers = this.getOrderedOtherPlayers(game_data.players);
         for (const player of otherPlayers) {
-            if (player.id !== this.bga.gameui.player_id) {
-                new PlayerArea(this, player.id, {
-                    ...player,
-                    end_bonus: game_data.end_bonus,
-                    player_board_side: game_data.player_board_side
-                });
-            }
+            new PlayerArea(this, player.id, {
+                ...player,
+                end_bonus: game_data.end_bonus,
+                player_board_side: game_data.player_board_side
+            });
         }
         // Easter egg
         if (this.bga.gameui.player_id === 92894721) {
@@ -5657,11 +5655,14 @@ class Game {
      * @private
      */
     getOrderedOtherPlayers(players) {
-        const ordered = Object.values(players).sort((a, b) => a.player_no - b.player_no);
-        const currentPlayerIndex = ordered.findIndex((p) => p.id === this.bga.gameui.player_id);
-        return currentPlayerIndex > 0
-            ? [...ordered.slice(currentPlayerIndex), ...ordered.slice(0, currentPlayerIndex)]
-            : ordered;
+        let ordered = Object.values(players).sort((a, b) => a.player_no - b.player_no);
+        if (!this.bga.players.isCurrentPlayerSpectator()) {
+            const currentPlayerIndex = ordered.findIndex((p) => p.id === this.bga.gameui.player_id);
+            ordered = [...ordered.slice(currentPlayerIndex), ...ordered.slice(0, currentPlayerIndex)];
+            return ordered.filter((p) => p.id !== this.bga.gameui.player_id);
+        }
+        else
+            return ordered;
     }
 }
 

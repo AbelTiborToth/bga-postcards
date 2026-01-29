@@ -87,13 +87,13 @@ interface Gamedatas<P = Player> {
 }
 
 interface Player {
-  no: number;
   sent_postcards_counter: number | null;
   beginner: boolean;
   color: string;
   color_back: any | null;
   eliminated: number;
   id: number;
+  player_no: number;
   is_ai: string;
   name: string;
   score: string;

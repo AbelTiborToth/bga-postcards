@@ -179,7 +179,7 @@ export class Hand extends GameElement {
 			fromPlaceholder: "off",
 			parallelAnimations: [
 				{
-					keyframes: [{ rotate: '0.5deg' }, { rotate: '0deg' }],
+					keyframes: [{ transform: 'rotate(0.5deg)' }, { transform: 'rotate(0deg)' }],
 				},
 			],
 		});
@@ -205,8 +205,8 @@ export class Hand extends GameElement {
 			parallelAnimations: [
 				{
 					keyframes: [
-						{ transform: 'rotateY(180deg)', rotate: '1deg' },
-						{ transform: 'rotateY(0deg)', rotate: '0deg' },
+						{ transform: 'rotateY(180deg) rotate(1deg)' },
+						{ transform: 'rotateY(0deg) rotate(0deg)' },
 					],
 				},
 			],

@@ -11,25 +11,25 @@ $camp_width: $camp_height * (609 / 544);
     width: $camp_width;
     background-image: url("img/camp.png");
     filter: drop-shadow(0 0 1px black);
-    rotate: 0deg;
+    transform: rotate(0deg);
 
     @include player_color_sprite($camp_height, $camp_width);
   }
   
   player_board camp {
-    &[location="1"] {top: 46px;; left: 5px; rotate: 90deg}
-    &[location="2"] {top: 79.7px; left: 5px; rotate: 90deg}
-    &[location="3"] {top: 106px; left: 16px; rotate: 45deg}
+    &[location="1"] {top: 46px;; left: 5px; transform: rotate(90deg);}
+    &[location="2"] {top: 79.7px; left: 5px; transform: rotate(90deg);}
+    &[location="3"] {top: 106px; left: 16px; transform: rotate(45deg);}
     &[location="4"] {top: 119px; left: 42px;}
     &[location="5"] {top: 119px; left: 75.5px;}
     &[location="6"] {top: 119px; left: 109.5px;}
     &[location="7"] {top: 119px; left: 144px;}
     &[location="8"] {top: 119px; left: 178.5px;}
     &[location="9"] {top: 119px; left: 213px;}
-    &[location="10"] {top: 106px; left: 238px; rotate: -45deg}
-    &[location="11"] {top: 80px; left: 250px; rotate: -90deg}
-    &[location="12"] {top: 46px; left: 250px; rotate: -90deg}
-    &[location="13"] {top: 12px; left: 250px; rotate: -90deg}
+    &[location="10"] {top: 106px; left: 238px; transform: rotate(-45deg);}
+    &[location="11"] {top: 80px; left: 250px; transform: rotate(-90deg);}
+    &[location="12"] {top: 46px; left: 250px; transform: rotate(-90deg);}
+    &[location="13"] {top: 12px; left: 250px; transform: rotate(-90deg);}
   }
   
   board camp {

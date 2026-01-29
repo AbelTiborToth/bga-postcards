@@ -34,7 +34,7 @@ $campsite_width: $campsite_height * ((1793 / 4) / (891 / 2));
   height: $postcard_height;
   width: $postcard_width;
   box-shadow: 0 0 2px black;
-  transition: top 1s, left 1s, transform 0.2s, rotate 0.2s;
+  transition: top 1s, left 1s, transform 0.2s;
 }
 
 @mixin sprite($xs, $ys, $height, $width, $mode: null) {

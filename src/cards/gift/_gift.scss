@@ -9,12 +9,11 @@
     @include card();
     @include sprite(5, 3, $card_height, $card_width);
 
-    transition: transform 0.2s, rotate 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     z-index: 9;
     
     &:hover {
-      transform: scale(2);
-      rotate: 0deg !important;
+      transform: scale(2) rotate(0deg) !important;
       z-index: 10;
     }
 
@@ -67,9 +66,9 @@
   board {
     gift {
       &[deck="true"] {top: 29px; left: 765px;}
-      &[location="1"] {top: $board_size * 0.167; left: $board_size * 0.861; rotate: -5.5deg;}
-      &[location="2"] {top: $board_size * 0.3038; left: $board_size * 0.87; rotate: -4.5deg;}
-      &[location="3"] {top: $board_size * 0.4427; left: $board_size * 0.881; rotate: -4deg;}
+      &[location="1"] {top: $board_size * 0.167; left: $board_size * 0.861; transform: rotate(-5.5deg);}
+      &[location="2"] {top: $board_size * 0.3038; left: $board_size * 0.87; transform: rotate(-4.5deg);}
+      &[location="3"] {top: $board_size * 0.4427; left: $board_size * 0.881; transform: rotate(-4deg);}
     }
   }
   

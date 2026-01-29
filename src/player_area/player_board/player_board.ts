@@ -100,7 +100,7 @@ export class PlayerBoard extends GameElement {
 			duration: 800,
 			parallelAnimations: [
 				{
-					keyframes: [{ rotate: '0deg' }, { rotate: `${rotate}deg` }],
+					keyframes: [{ transform: 'rotate(0deg)' }, { transform: `rotate(${rotate}deg)` }],
 				},
 			],
 		});
