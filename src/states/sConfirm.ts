@@ -54,11 +54,27 @@ export class sConfirm {
 		const autoClickPreference = this.bga.userPreferences.get(100) === 1;
 
 		// Add confirm button with optional auto-click
-		this.bga.statusBar.addActionButton(
-			_("Confirm"),
-			() => this.bga.actions.performAction("actConfirm"),
-			{ autoclick: autoClickPreference }
-		);
+		if (autoClickPreference) {
+			const abortController = new AbortController();
+			this.bga.statusBar.addActionButton(
+				_("Confirm"),
+				() => this.bga.actions.performAction("actConfirm"),
+				{ autoclick: {abortSignal: abortController.signal} }
+			);
+			const abortButton = this.bga.statusBar.addActionButton(
+				_("Let me think!"),
+				() => {
+					abortButton.remove();
+					abortController.abort();
+				},
+				{ color: 'secondary' }
+			);
+		} else {
+			this.bga.statusBar.addActionButton(
+				_("Confirm"),
+				() => this.bga.actions.performAction("actConfirm")
+			);
+		}
 
 		// Add undo/reset buttons if available
 		this.game.addUndoButtons(args.undo);

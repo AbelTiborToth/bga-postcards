@@ -206,7 +206,6 @@ export class Notif {
 	 */
 	public async notif_refillTravelSupply(args: { travel: number; location: number }): Promise<void> {
 		await (this.game.c.board[0] as Board).refillTravel(args.travel, args.location);
-		this.game.c.board[0].c.travel[args.travel].setArg("deck", false);
 	}
 
 	/**

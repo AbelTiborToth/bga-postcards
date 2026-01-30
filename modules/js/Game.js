@@ -623,7 +623,17 @@ class sConfirm {
         // Check user preference for auto-confirming actions
         const autoClickPreference = this.bga.userPreferences.get(100) === 1;
         // Add confirm button with optional auto-click
-        this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"), { autoclick: autoClickPreference });
+        if (autoClickPreference) {
+            const abortController = new AbortController();
+            this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"), { autoclick: { abortSignal: abortController.signal } });
+            const abortButton = this.bga.statusBar.addActionButton(_("Let me think!"), () => {
+                abortButton.remove();
+                abortController.abort();
+            }, { color: 'secondary' });
+        }
+        else {
+            this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"));
+        }
         // Add undo/reset buttons if available
         this.game.addUndoButtons(args.undo);
     }
@@ -4284,6 +4294,8 @@ class Board extends GameElement {
                     ],
                 },
             ],
+        }).then(() => {
+            this.c.travel[travel].setArg("deck", false);
         });
     }
     /**
@@ -4970,7 +4982,6 @@ class Notif {
      */
     async notif_refillTravelSupply(args) {
         await this.game.c.board[0].refillTravel(args.travel, args.location);
-        this.game.c.board[0].c.travel[args.travel].setArg("deck", false);
     }
     /**
      * Handles undo discard travels notification - restores discarded travels to hand

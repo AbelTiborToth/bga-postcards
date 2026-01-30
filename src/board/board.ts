@@ -341,7 +341,9 @@ export class Board extends GameElement {
 					},
 				],
 			}
-		);
+		).then(() => {
+			this.c.travel[travel].setArg("deck", false);
+		});
 	}
 
 	/**
