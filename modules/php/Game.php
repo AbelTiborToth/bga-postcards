@@ -72,8 +72,8 @@ class Game extends Table
 		$this->postcardsCounter = $this->counterFactory->createTableCounter('postcards_counter', 0 , 52);
 		$this->postcardsDiscardCounter = $this->counterFactory->createTableCounter('postcards_discard_counter', 0 , 36);
 
-		$this->travelsCounter = $this->counterFactory->createTableCounter('travels_counter', 0 , 62);
-		$this->travelsDiscardCounter = $this->counterFactory->createTableCounter('travels_discard_counter', 0 , 62);
+		$this->travelsCounter = $this->counterFactory->createTableCounter('travels_counter', 0 , 67);
+		$this->travelsDiscardCounter = $this->counterFactory->createTableCounter('travels_discard_counter', 0 , 67);
 
 		$this->giftsCounter = $this->counterFactory->createTableCounter('gifts_counter', 0 , 22);
 
@@ -89,12 +89,6 @@ class Game extends Table
 			if (isset($args['player_id']) && !isset($args['player_name']) && str_contains($message, '${player_name}')) {
 				$args['player_name'] = $this->getPlayerNameById($args['player_id']);
 			}
-        
-//            if (isset($args['card_id']) && !isset($args['card_name']) && str_contains($message, '${card_name}')) {
-//                $args['card_name'] = self::$CARD_TYPES[$args['card_id']]['card_name'];
-//                $args['i18n'][] = ['card_name'];
-//            }
-            
 			return $args;
 		});
 	}
