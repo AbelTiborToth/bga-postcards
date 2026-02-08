@@ -1,0 +1,60 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  bonus_actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 300px;
+  }
+
+  bonus_actions travel_option {
+    margin: $card_margin / 2 $card_margin $card_margin / 2 $card_margin;
+    transition: box-shadow 0.2s;
+
+    &[count="0"] {display: none;}
+    &[count="1"] {
+      counter {display: none;}
+    }
+
+    counter {transition: box-shadow 0.2s;}
+
+    &[active="true"] {
+      box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+      counter {box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);}
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+        counter {box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);}
+      }
+    }
+
+    counter {
+      position: absolute;
+      right: -$card_margin / 2 - 5px;
+      bottom: -$card_margin / 2;
+
+      text-shadow: none;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+
+      height: 20px;
+      width: 20px;
+      border-radius: 10px 10px 10px 10px;
+
+      background-color: white;
+      text-align: center;
+
+      &.counter_in_progress {
+        color: black !important;
+      }
+    }
+  }
+}

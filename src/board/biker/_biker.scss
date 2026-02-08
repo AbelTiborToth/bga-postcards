@@ -1,0 +1,108 @@
+@use "../../globals" as *;
+
+$biker_size_width: 50px;
+$biker_size_height: $biker_size_width * (939 / 1061);
+
+@mixin all() {
+  
+  biker {
+    height: $biker_size_height;
+    width: $biker_size_width;
+    background-image: url("img/biker.png");
+
+    @include absolute();
+    @include player_color_sprite($biker_size_height, $biker_size_width);
+
+    filter: drop-shadow(0 0 2px black);
+    
+    transition: top 0.8s, left 0.8s, scale 0.8s;
+    
+    user-select: none;
+    
+    z-index: 25;
+  
+    &[own="true"]::after {
+      content: "";
+      display: block;
+      position: relative;
+      height: 10px;
+      width: 10px;
+      left: 20px;
+      top: $biker_size_height - 5px;
+      background-color: #FF39A5;
+      border-radius: 5px 5px 5px 5px;
+    }
+  }
+  
+  board biker {
+    &[location="1"],
+    &[location="6"],
+    &[location="11"] {scale: 0.7;}
+    
+    &[location="1"][color="174D62"] {top: 243px; left: 437px;}
+    &[location="1"][color="EE7628"] {top: 235px; left: 403px;}
+    &[location="1"][color="A4C877"] {top: 176px; left: 445px;}
+    &[location="1"][color="FCC922"] {top: 180px; left: 375px;}
+    
+    &[location="2"][color="174D62"] {top: 37px; left: 411px;}
+    &[location="2"][color="EE7628"] {top: 72px; left: 487px;}
+    &[location="2"][color="A4C877"] {top: 136px; left: 444px;}
+    &[location="2"][color="FCC922"] {top: 104px; left: 403px;}
+
+    &[location="3"][color="174D62"] {top: 170px; left: 499px;}
+    &[location="3"][color="EE7628"] {top: 138px; left: 591px;}
+    &[location="3"][color="A4C877"] {top: 172px; left: 640px;}
+    &[location="3"][color="FCC922"] {top: 235px; left: 569px;}
+
+    &[location="4"][color="174D62"] {top: 331px; left: 644px;}
+    &[location="4"][color="EE7628"] {top: 362px; left: 557px;}
+    &[location="4"][color="A4C877"] {top: 288px; left: 584px;}
+    &[location="4"][color="FCC922"] {top: 352px; left: 472px;}
+
+    &[location="5"][color="174D62"] {top: 494px; left: 504px;}
+    &[location="5"][color="EE7628"] {top: 446px; left: 653px;}
+    &[location="5"][color="A4C877"] {top: 414px; left: 586px;}
+    &[location="5"][color="FCC922"] {top: 445px; left: 463px;}
+
+    &[location="6"][color="174D62"] {top: 549px; left: 715px;}
+    &[location="6"][color="EE7628"] {top: 491px; left: 673px;}
+    &[location="6"][color="A4C877"] {top: 625px; left: 663px;}
+    &[location="6"][color="FCC922"] {top: 634px; left: 616px;}
+
+    &[location="7"][color="174D62"] {top: 703px; left: 767px;}
+    &[location="7"][color="EE7628"] {top: 761px; left: 744px;}
+    &[location="7"][color="A4C877"] {top: 700px; left: 687px;}
+    &[location="7"][color="FCC922"] {top: 652px; left: 781px;}
+    
+    &[location="8"][color="174D62"] {top: 574px; left: 455px;}
+    &[location="8"][color="EE7628"] {top: 627px; left: 334px;}
+    &[location="8"][color="A4C877"] {top: 692px; left: 389px;}
+    &[location="8"][color="FCC922"] {top: 679px; left: 481px;}
+    
+    &[location="9"][color="174D62"] {top: 510px; left: 344px;}
+    &[location="9"][color="EE7628"] {top: 565px; left: 281px;}
+    &[location="9"][color="A4C877"] {top: 395px; left: 299px;}
+    &[location="9"][color="FCC922"] {top: 666px; left: 269px;}
+    
+    &[location="10"][color="174D62"] {top: 328px; left: 314px;}
+    &[location="10"][color="EE7628"] {top: 305px; left: 412px;}
+    &[location="10"][color="A4C877"] {top: 367px; left: 379px;}
+    &[location="10"][color="FCC922"] {top: 279px; left: 344px;}
+
+    &[location="11"][color="174D62"] {top: 379px; left: 182px;}
+    &[location="11"][color="EE7628"] {top: 388px; left: 247px;}
+    &[location="11"][color="A4C877"] {top: 297px; left: 277px;}
+    &[location="11"][color="FCC922"] {top: 343px; left: 172px;}
+    
+    &[location="12"][color="174D62"] {top: 210px; left: 129px;}
+    &[location="12"][color="EE7628"] {top: 306px; left: 82px;}
+    &[location="12"][color="A4C877"] {top: 213px; left: 67px;}
+    &[location="12"][color="FCC922"] {top: 291px; left: 22px;}
+
+    &[location="13"][color="174D62"] {top: 105px; left: 325px;}
+    &[location="13"][color="EE7628"] {top: 126px; left: 209px;}
+    &[location="13"][color="A4C877"] {top: 190px; left: 188px;}
+    &[location="13"][color="FCC922"] {top: 231px; left: 302px;}
+  }
+
+}

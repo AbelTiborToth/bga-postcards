@@ -1,0 +1,24 @@
+@use "../../../globals" as *;
+
+$size: 10.5px;
+
+@mixin all() {
+  
+  circle {
+    position: absolute;
+    display: block;
+    height: $size;
+    width: $size;
+    border-radius: $size / 2 $size / 2 $size / 2 $size / 2;
+    background-color: rgba(136, 198, 79, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  circle[type="1"] {top: 54px; left: 41px;}
+  circle[type="2"] {top: 54px; left: 55px;}
+  circle[type="3"] {top: 54px; left: 68px;}
+  circle[type="4"] {top: 54px; left: 82px;}
+  
+  circle[active="true"] {opacity: 1};
+}

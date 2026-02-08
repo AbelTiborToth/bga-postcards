@@ -1,0 +1,154 @@
+/**
+ *------
+ * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
+ * Postcards implementation : © Tóth Ábel Tibor toth.abel.tibor2@gmail.com
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * postcards.css
+ *
+ * Postcards stylesheet
+ *
+ */
+
+@use "bga_styles/bga_floating_message" as bga_floating_message;
+@use "bga_styles/bga_logs" as bga_logs;
+@use "bga_styles/bga_page_title" as bga_page_title;
+@use "bga_styles/bga_player_panels" as bga_player_panels;
+@use "bga_styles/bga_zoom" as bga_zoom;
+@use "bga_styles/bga_help" as bga_help;
+
+@use "cards/travel/travel" as travel;
+@use "cards/travel/travel_option/travel_option" as travel_option;
+
+@use "cards/gift/gift" as gift;
+
+@use "cards/postcard/postcard" as postcard;
+@use "cards/postcard/souvenir/souvenir" as souvenir;
+@use "cards/postcard/souvenir_selector/souvenir_space" as souvenir_space;
+@use "cards/postcard/stamp/stamp" as stamp;
+@use "cards/postcard/stamp_selector/stamp_space" as stamp_space;
+
+@use "postcard_supply/postcard_supply" as postcard_supply;
+@use "postcard_guide/postcard_guide" as postcard_guide;
+
+@use "player_area/player_area" as player_area;
+
+@use "player_area/itinerary/itinerary" as itinerary;
+@use "player_area/itinerary/circle/circle" as circle;
+@use "player_area/player_board/player_board" as player_board;
+@use "player_area/gift_player/gift_player" as gift_player;
+@use "player_area/postcard_player/postcard_player" as postcard_player;
+@use "player_area/hand/hand" as hand;
+@use "player_area/hand/double_actions/double_actions" as double_actions;
+@use "player_area/bonus_actions/bonus_actions" as bonus_actions;
+
+@use "board/board" as board;
+@use "board/biker/biker" as biker;
+@use "board/region/region" as region;
+@use "board/campsite/campsite" as campsite;
+@use "board/travel_deck/travel_deck" as travel_deck;
+@use "board/gift_deck/gift_deck" as gift_deck;
+@use "board/end_game_bonus/end_game_bonus" as end_game_bonus;
+
+@use "camp/camp" as camp;
+
+html {
+  @include bga_floating_message.all();
+  @include bga_logs.all();
+  @include bga_page_title.all();
+  @include bga_player_panels.all();
+  @include bga_zoom.all();
+  @include bga_help.all();
+
+  @include travel.all();
+  @include travel_option.all();
+  
+  @include gift.all();
+  
+  @include postcard.all();
+  @include souvenir.all();
+  @include souvenir_space.all();
+  @include stamp.all();
+  @include stamp_space.all();
+
+  @include postcard_supply.all();
+  @include postcard_guide.all();
+
+  @include player_area.all();
+
+  @include itinerary.all();
+  @include circle.all();
+  @include player_board.all();
+  @include gift_player.all();
+  @include postcard_player.all();
+  @include hand.all();
+  @include double_actions.all();
+  @include bonus_actions.all();
+
+  @include board.all();
+  @include biker.all();
+  @include region.all();
+  @include campsite.all();
+  @include travel_deck.all();
+  @include gift_deck.all();
+  @include end_game_bonus.all();
+  
+  @include camp.all();
+
+  @font-face {
+    font-family: main;
+    src: url("img/font/seravek.woff2");
+  }
+  
+  @font-face {
+    font-family: fancy;
+    src: url("img/font/CRETA.woff2");
+  }
+}
+
+html { 
+  &.thematic_background {
+    background-image: url("img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  &.thematic_font {
+    body {
+      font-family: main !important;
+    }
+
+    .player-name a,
+    .player_score_value,
+    h3 {
+      font-weight: normal;
+      font-family: fancy !important;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+  }
+
+
+  h3,
+  h4 {
+    color: #DF5C36;
+  }
+  
+  postcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+}
+

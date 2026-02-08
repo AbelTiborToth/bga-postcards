@@ -1,0 +1,18 @@
+@use "../globals" as *;
+
+
+@mixin all() {
+  
+  $height: $postcard_width;
+  $width: $postcard_height * 5 + $card_margin * 4;
+  
+  postcard_guide {
+    position: relative;
+    height: $height;
+    width: $width;
+
+    border-radius: 5px;
+    margin: 0 calc(50% - $width / 2) 0 calc(50% - $width / 2);
+  }
+  
+}
