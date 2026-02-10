@@ -100,19 +100,11 @@ export class sAction {
 		this.setTitle(args, isCurrentPlayerActive);
 		if (!isCurrentPlayerActive) return;
 
-		console.log(args);
 		this.game.possible_actions = args.possible_actions;
         this.game.possible_actions.double = args.used_travels.length < args.max_travels - 1;
 
 		const playerId = this.bga.gameui.player_id;
 		const playerArea = this.game.c.player_area?.[playerId];
-
-		if (!playerArea) {
-			console.warn(`Player area not found for player ${playerId}`);
-			return;
-		}
-
-        console.log(playerArea.c);
         
 		const bonusActions: BonusActions = playerArea.c.bonus_actions?.[0] as BonusActions;
 		const doubleActions: DoubleActions = playerArea.c.hand?.[0].c.double_actions?.[0] as DoubleActions;
@@ -122,8 +114,6 @@ export class sAction {
 
 		// Activate bonus actions
 		bonusActions.activateBonusActions();
-        
-        console.log(args.possible_actions);
         
         doubleActions.activate(
             args.possible_actions.postcard,

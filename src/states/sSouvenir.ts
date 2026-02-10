@@ -63,11 +63,7 @@ export class sSouvenir {
 		if (!isCurrentPlayerActive) return;
 
 		const area: PlayerArea = this.game.c.player_area?.[this.bga.gameui.player_id] as PlayerArea;
-		if (!area) {
-			console.warn(`Player area not found for player ${this.bga.gameui.player_id}`);
-			return;
-		}
-
+		
 		// Activate souvenir spaces available for placement
 		area.activateSouvenirSpaces(args.spaces);
 

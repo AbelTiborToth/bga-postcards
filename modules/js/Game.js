@@ -292,16 +292,10 @@ class sAction {
         this.setTitle(args, isCurrentPlayerActive);
         if (!isCurrentPlayerActive)
             return;
-        console.log(args);
         this.game.possible_actions = args.possible_actions;
         this.game.possible_actions.double = args.used_travels.length < args.max_travels - 1;
         const playerId = this.bga.gameui.player_id;
         const playerArea = this.game.c.player_area?.[playerId];
-        if (!playerArea) {
-            console.warn(`Player area not found for player ${playerId}`);
-            return;
-        }
-        console.log(playerArea.c);
         const bonusActions = playerArea.c.bonus_actions?.[0];
         const doubleActions = playerArea.c.hand?.[0].c.double_actions?.[0];
         const hand = playerArea.c.hand?.[0];
@@ -309,7 +303,6 @@ class sAction {
         const giftPlayer = playerArea.c.gift_player?.[0];
         // Activate bonus actions
         bonusActions.activateBonusActions();
-        console.log(args.possible_actions);
         doubleActions.activate(args.possible_actions.postcard, args.possible_actions.camp, args.possible_actions.stamp.all);
         if (args.used_travels.length !== args.max_travels) {
             hand?.activateTravelsExcept(args.used_travels);
@@ -985,10 +978,6 @@ class sSouvenir {
         if (!isCurrentPlayerActive)
             return;
         const area = this.game.c.player_area?.[this.bga.gameui.player_id];
-        if (!area) {
-            console.warn(`Player area not found for player ${this.bga.gameui.player_id}`);
-            return;
-        }
         // Activate souvenir spaces available for placement
         area.activateSouvenirSpaces(args.spaces);
         // Add Skip button (placement is optional)
@@ -5014,7 +5003,6 @@ class Notif {
             });
             delete this.game.c.board[0].c.travel[args.travel];
         }
-        console.log(this.game.c.board[0].c.travel);
     }
     /**
      * Handles gift card selection notification - adds gift to player area
@@ -5038,7 +5026,6 @@ class Notif {
         else {
             await this.game.c.board[0].refillTravel(args.travel, args.location);
         }
-        console.log(this.game.c.board[0].c.travel);
     }
     /**
      * Handles travel deck draw notification - animates travel taken from deck

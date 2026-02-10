@@ -243,7 +243,6 @@ export class Notif {
 			});
 			delete this.game.c.board[0].c.travel[args.travel];
 		}
-		console.log(this.game.c.board[0].c.travel);
 		
 	}
 
@@ -273,7 +272,6 @@ export class Notif {
 		} else {
 			await (this.game.c.board[0] as Board).refillTravel(args.travel, args.location);
 		}
-		console.log(this.game.c.board[0].c.travel);
 
 	}
 
