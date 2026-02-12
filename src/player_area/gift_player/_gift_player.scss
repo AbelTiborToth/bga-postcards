@@ -1,0 +1,23 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  gift_player {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    
+    gift {
+      position: relative;
+    }
+
+    .bga-animations_placeholder-grow {
+      animation-name: hand_marginAnimation_1;
+      animation-direction: reverse;
+      animation-duration: 0.8s;
+    }
+  }
+}

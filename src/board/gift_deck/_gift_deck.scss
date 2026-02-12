@@ -1,0 +1,76 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  gift_deck {
+    @include absolute();
+    top: 28px;
+    left: 766px;
+    transform: rotate(-4deg);
+    
+    @include card();
+    
+    background-color: white;
+    
+    background-image: url("img/card_back.jpg");
+    background-size: ($card_width * 2) $card_height;
+    background-position: -$card_width;
+
+    transition: box-shadow 0.2s;
+  }
+
+  deck_stack[type="1"] {
+    @include absolute();
+    top: 28px;
+    left: 766px;
+  }
+
+  deck_stack[type="1"][count="3"]::before {opacity: 1}
+
+  deck_stack[type="1"]::before {
+    display: block;
+    position: absolute;
+
+    top: 6px;
+    left: -6px;
+    transform: rotate(-4deg);
+
+    height: $card_height;
+    width: $card_width;
+    border-radius: 5px;
+
+    box-shadow: 0 0 2px black;
+    background-color: white;
+
+    content: "";
+    z-index: -10;
+
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+
+  deck_stack[type="1"][count="3"]::after,
+  deck_stack[type="1"][count="2"]::after {opacity: 1;}
+
+  deck_stack[type="1"]::after {
+    display: block;
+    position: absolute;
+
+    top: 3px;
+    left: -3px;
+    transform: rotate(-4deg);
+
+    height: $card_height;
+    width: $card_width;
+    border-radius: 5px;
+
+    box-shadow: 0 0 2px black;
+    background-color: white;
+
+    content: "";
+    z-index: -10;
+
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+}

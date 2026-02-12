@@ -1,0 +1,64 @@
+$player_colors: ("174D62", "A4C877", "EE7628", "FCC922");
+
+$board_size: 900px;
+
+$card_height: $board_size * (88 / 700);
+$card_width: $card_height * ((968 / 4) / (1116 / 3));
+$card_margin: 10px;
+
+$postcard_width: $board_size / 4;
+$postcard_height: $postcard_width * (10 / 15);
+
+$player_board_height: $board_size / 6;
+$player_board_width: $player_board_height * (1940 / 1031);
+
+$postcard_token_height: 37px;
+$postcard_token_width: $postcard_token_height * (184 / 229);
+
+$campsite_height: 24px;
+$campsite_width: $campsite_height * ((1793 / 4) / (891 / 2));
+
+@mixin absolute() {
+  display: block;
+  position: absolute;
+}
+
+@mixin card() {
+  height: $card_height;
+  width: $card_width;
+  border-radius: 5px;
+  box-shadow: 0 0 2px black;
+}
+
+@mixin postcard() {
+  height: $postcard_height;
+  width: $postcard_width;
+  box-shadow: 0 0 2px black;
+  transition: top 1s, left 1s, transform 0.2s;
+}
+
+@mixin sprite($xs, $ys, $height, $width, $mode: null) {
+  background-size: $width * $xs $height * $ys;
+  @for $x from 1 through $xs {
+    @for $y from 1 through $ys {
+      @if ($mode == null) {
+        &[type="#{($y - 1) * $xs + $x}"] {
+          background-position: ($width * -($x - 1)) ($height * -($y - 1));
+        }
+      }
+      @else {
+        &[type="#{($y - 1) * $xs + $x}"]#{$mode} {
+          background-position: ($width * -($x - 1)) ($height * -($y - 1));
+        }
+      }
+    }
+  }
+}
+
+@mixin player_color_sprite($height, $width) {
+  background-size: $width * 2 $height * 2;
+  &[color="174D62"] {background-position: 0 0;}
+  &[color="EE7628"] {background-position: 0 $height;}
+  &[color="A4C877"] {background-position: $width 0;}
+  &[color="FCC922"] {background-position: $width $height;}
+}

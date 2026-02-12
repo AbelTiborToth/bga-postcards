@@ -1,0 +1,91 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  travel_deck {
+    @include absolute();
+    top: 769px;
+    left: 111px;
+    transform: rotate(1deg);
+    
+    @include card();
+    
+    background-color: white;
+    
+    background-image: url("img/card_back.jpg");
+    background-size: ($card_width * 2) $card_height;
+
+    transition: box-shadow 0.2s;
+    
+    &[active="true"] {
+      box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+      }
+    }
+  }
+
+  //.bga-animations_animation-surface {
+  //  travel_deck {
+  //    top: 0;
+  //    left: 0;
+  //  }
+  //}
+
+  deck_stack[type="0"] {
+    @include absolute();
+    top: 769px;
+    left: 111px;
+  }
+
+  deck_stack[type="0"][count="3"]::before {opacity: 1}
+  
+  deck_stack[type="0"]::before {
+    display: block;
+    position: absolute;
+    
+    top: 6px;
+    left: -6px;
+    transform: rotate(1deg);
+    
+    height: $card_height;
+    width: $card_width;
+    border-radius: 5px;
+    
+    box-shadow: 0 0 2px black;
+    background-color: white;
+    
+    content: "";
+    z-index: -10;
+
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+  
+  deck_stack[type="0"][count="3"]::after,
+  deck_stack[type="0"][count="2"]::after {opacity: 1;}
+
+  deck_stack[type="0"]::after {
+    display: block;
+    position: absolute;
+    
+    top: 3px;
+    left: -3px;
+    transform: rotate(1deg);
+    
+    height: $card_height;
+    width: $card_width;
+    border-radius: 5px;
+    
+    box-shadow: 0 0 2px black;
+    background-color: white;
+    
+    content: "";
+    z-index: -10;
+
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+}

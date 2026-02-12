@@ -1,0 +1,19 @@
+@mixin all() {
+
+  #logs,
+  .chatwindowlogs_zone {
+    .log[cancel="true"]:not(:hover) {opacity: 0.5;}
+  }
+  
+  #logs .log .roundedbox,
+  .chatwindowlogs_zone .log {
+    //background-color: rgb(255, 246, 246);
+  }
+  
+  #logs .log[cancel="true"] .roundedbox,
+  .chatwindowlogs_zone .log[cancel="true"] {
+    text-decoration:	line-through;
+    background-color: rgba(255, 133, 133, 0.7) !important;
+  }
+  
+}

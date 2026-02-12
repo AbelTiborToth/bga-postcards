@@ -1,0 +1,111 @@
+{
+  "table": {
+    "turns_number": {
+      "id": 10,
+      "name": "Number of turns",
+      "type": "int"
+    }
+  },
+  "player": {
+    "turns_number": {
+      "id": 10,
+      "name": "Number of turns",
+      "type": "int"
+    },
+    "travel_cards": {
+      "id": 11,
+      "name": "Number of Travel cards played",
+      "type": "int"
+    },
+    "travel_cards_double": {
+      "id": 12,
+      "name": "Number of two Travel cards played as any other",
+      "type": "int"
+    },
+    "action_move": {
+      "id": 13,
+      "name": "Number of Movement actions",
+      "type": "int"
+    },
+    "placed_camps": {
+      "id": 14,
+      "name": "Number of placed Camps",
+      "type": "int"
+    },
+    "best_traveller": {
+      "id": 15,
+      "name": "Number of \"Best Traveler In The Region\" achievements",
+      "type": "int"
+    },
+    "best_traveller_points": {
+      "id": 16,
+      "name": "Number of points from \"Best Traveler In The Region\" achievements",
+      "type": "int"
+    },
+    "placed_souvenirs": {
+      "id": 17,
+      "name": "Number of placed Souvenirs",
+      "type": "int"
+    },
+    "bonus_actions": {
+      "id": 18,
+      "name": "Number of Bonus actions used",
+      "type": "int"
+    },
+    "placed_stamps": {
+      "id": 19,
+      "name": "Number of placed Stamps",
+      "type": "int"
+    },
+    "sent_postcards": {
+      "id": 20,
+      "name": "Number of sent Postcards",
+      "type": "int"
+    },
+    "sent_postcards_points": {
+      "id": 21,
+      "name": "Number of points from sent Postcards",
+      "type": "int"
+    },
+    "gifts": {
+      "id": 22,
+      "name": "Number of Gift cards collected",
+      "type": "int"
+    },
+    "action_gifts": {
+      "id": 23,
+      "name": "Number of \"Action\" Gift cards collected (flash icon)",
+      "type": "int"
+    },
+    "gift_actions": {
+      "id": 24,
+      "name": "Number of Gift actions used",
+      "type": "int"
+    },
+    "point_gifts": {
+      "id": 25,
+      "name": "Number of \"Scoring\" Gift cards collected (bell icon)",
+      "type": "int"
+    },
+    "gift_points": {
+      "id": 26,
+      "name": "Number of points from Gift cards",
+      "type": "int"
+    },
+    "itinerary_points": {
+      "id": 27,
+      "name": "Number of points from Itinerary card",
+      "type": "int"
+    },
+    "end_bonus_points": {
+      "id": 28,
+      "name": "Number of points from the End Game bonus",
+      "type": "int"
+    },
+    "unsent_postcards_points": {
+      "id": 29,
+      "name": "Number of points from unsent Postcards",
+      "type": "int"
+    }
+  }
+}

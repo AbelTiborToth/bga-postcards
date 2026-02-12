@@ -1,0 +1,28 @@
+@use "../../../globals" as *;
+
+@mixin all() {
+  stamp {
+    @include absolute();
+    
+    height: $postcard_token_height;
+    width: $postcard_token_width;
+    
+    background-image: url("img/postcard_tokens.jpg");
+    background-repeat: no-repeat;
+    background-size: ($postcard_token_width * 2) $postcard_token_height;
+    background-position: (-$postcard_token_width) 0;
+    
+
+    filter: drop-shadow(0 0 1px black);
+    border-radius: 3px;
+  }
+
+  postcard stamp {
+    &[location="1"] {top: 5px; left: 122px;}
+    &[location="2"] {top: 5px; left: 156px;}
+    &[location="3"] {top: 5px; left: 190px;}
+    &[location="4"] {top: 46px; left: 122px;}
+    &[location="5"] {top: 46px; left: 156px;}
+    &[location="6"] {top: 46px; left: 190px;}
+  }
+}

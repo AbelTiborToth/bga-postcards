@@ -1,0 +1,12 @@
+@mixin all() {
+
+  .bga-animations_floating-message {
+    font-size: 42px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8), 2px -2px 2px rgba(0, 0, 0, 0.8), -2px 2px 2px rgba(0, 0, 0, 0.8), -2px -2px 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  .bga-animations_floating-message[style*="--color: #174D62"] {
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.8), 2px -2px 2px rgba(255, 255, 255, 0.8), -2px 2px 2px rgba(255, 255, 255, 0.8), -2px -2px 2px rgba(255, 255, 255, 0.8);
+  }
+  
+}

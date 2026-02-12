@@ -1,0 +1,31 @@
+@use "../../globals" as *;
+
+@keyframes marginAnimation_postcardPlayer_1 {
+  from {margin: ($card-margin / 2) ($card-margin / 2) ($card-margin / 2) ($card-margin / 2);}
+  to {margin: 0 0 0 0;}
+}
+
+@mixin all() {
+  
+  postcard_player {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: $postcard_width * 3 + $card_margin * 3;
+    transition: height 0.2s, width 0.2s;
+
+    .bga-animations_placeholder-shrink {
+      animation-name: marginAnimation_postcardPlayer_1;
+      animation-duration: 0.8s;
+    }
+    
+    .bga-animations_placeholder-grow {
+      animation-name: marginAnimation_postcardPlayer_1;
+      animation-duration: 0.8s;
+      animation-direction: reverse;
+    }
+  }
+}

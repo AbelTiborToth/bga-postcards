@@ -1,0 +1,17 @@
+{
+    "100": {
+        "name": "Player Board Side",
+        "values": {
+            "1": {
+                "name": "Side A",
+                "tmdisplay": "Player Board: A"
+            },
+             "2": {
+                "name": "Side B",
+                "description": "When using side B of the player board, each time you benefit from a Star effect, you can choose between: a Movement effect, a Postcard effect, or placing 1 Stamp.",
+                "tmdisplay": "Player Board: B",
+                "nobeginner": true
+            }
+        }
+    }
+}

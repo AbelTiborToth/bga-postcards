@@ -1,0 +1,39 @@
+@use "../../../globals" as *;
+
+@mixin all() {
+  
+  double_actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 390px;
+    border-radius: 5px;
+
+    background-color: rgba(255, 57, 165, 0.2);
+    box-shadow : 1px 1px 1px rgba(153, 0, 81, 0.5), -1px 1px 1px rgba(153, 0, 81, 0.5), 1px -1px 1px rgba(153, 0, 81, 0.5), -1px -1px 1px rgba(153, 0, 81, 0.5);
+    
+    margin-top: 5px;
+    
+    order: 2;
+  }
+
+  double_actions travel_option {
+    margin     : $card_margin / 2 $card_margin $card_margin / 2 $card_margin;
+    transition : box-shadow 0.2s;
+
+    box-shadow : 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+
+    &:hover {
+      cursor     : pointer;
+      box-shadow : 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+    }
+
+    &[active="false"] {
+      display: none;
+    }
+  }
+  
+  hand[double="false"] double_actions {display: none;}
+}
