@@ -27,13 +27,6 @@
     }
   }
 
-  //.bga-animations_animation-surface {
-  //  travel_deck {
-  //    top: 0;
-  //    left: 0;
-  //  }
-  //}
-
   deck_stack[type="0"] {
     @include absolute();
     top: 769px;
@@ -87,5 +80,13 @@
 
     transition: opacity 0.5s;
     opacity: 0;
+  }
+
+  .bga-animations_animation-surface {
+    travel_deck {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
   }
 }

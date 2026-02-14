@@ -5036,7 +5036,6 @@ class Notif {
         this.game.c.board[0].activateAllTravels(false);
         if (this.game.bga.gameui.player_id !== args.player_id) {
             const element = document.createElement('travel_deck');
-            element.setAttribute("type", "0");
             await this.game.animationManager.slideFloatingElement(element, this.game.c.board[0].c.travel_deck[0].html, this.game.bga.playerPanels.getElement(args.player_id), { duration: 800, parallelAnimations: [{ keyframes: [{ opacity: '1' }, { opacity: '0' }] }] });
         }
     }

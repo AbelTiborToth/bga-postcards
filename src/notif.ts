@@ -284,7 +284,6 @@ export class Notif {
 		(this.game.c.board[0] as Board).activateAllTravels(false);
 		if (this.game.bga.gameui.player_id !== args.player_id) {
 			const element = document.createElement('travel_deck');
-			element.setAttribute("type", "0");
 			await this.game.animationManager.slideFloatingElement(
 				element,
 				(this.game.c.board[0].c.travel_deck[0] as TravelDeck).html,
