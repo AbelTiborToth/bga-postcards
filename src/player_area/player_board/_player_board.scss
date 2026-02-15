@@ -1,0 +1,33 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  player_board {
+    display: flex;
+    position: relative;
+    height: $player_board_height;
+    width: $player_board_width;
+    border-radius: 8px 8px 55px 55px;
+    box-shadow: 0 0 2px black;
+    margin: $card_margin / 2 0 $card_margin / 2 0;
+
+    &[side="true"] {background-image: url("img/player_board/player_board_a.jpg")};
+    &[side="false"] {background-image: url("img/player_board/player_board_b.jpg")};
+    @include player_color_sprite($player_board_height, $player_board_width);
+  }
+  
+  player_board name_label {
+    position: absolute;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px #4D4D4D, 1px -1px 2px #4D4D4D, -1px 1px 2px #4D4D4D, -1px -1px 2px #4D4D4D;
+    font-size: 12px;
+  }
+  
+  &.thematic_font player_board name_label {
+    font-family: fancy !important;
+    font-weight: normal;
+  }
+}

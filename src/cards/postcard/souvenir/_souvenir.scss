@@ -1,0 +1,28 @@
+@use "../../../globals" as *;
+
+
+@mixin all() {
+  souvenir {
+    @include absolute();
+    
+    height: $postcard_token_height;
+    width: $postcard_token_width;
+    
+    background-image: url("img/postcard_tokens.jpg");
+    background-repeat: no-repeat;
+    background-size: ($postcard_token_width * 2) $postcard_token_height;
+
+    filter: drop-shadow(0 0 1px black);
+    border-radius: 3px;
+    
+    transform: rotate(-90deg);
+    
+    user-select: none;
+  }
+
+  postcard souvenir {
+    &[location="1"] {top: 2px; left: 9px;}
+    &[location="2"] {top: 39px; left: 9px;}
+    &[location="3"] {top: 76px; left: 9px;}
+  }
+}

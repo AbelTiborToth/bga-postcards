@@ -1,0 +1,115 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  travel {
+    background-image: url("img/travel.jpg");
+    
+    @include absolute();
+    @include card();
+    @include sprite(4, 3, $card_height, $card_width);
+    
+    transition: transform 0.2s, box-shadow 0.2s;
+    
+    &[active="true"] {
+      box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+      }
+    }
+  }
+  
+  board travel {
+    &[deck="true"] {top: 769px; left: 111px;}
+    &[location="1"] {top: $board_size * 0.855; left: $board_size * 0.214; transform: rotate(0.5deg);}
+    &[location="2"] {top: $board_size * 0.857; left: $board_size * 0.302; transform: rotate(0.5deg);}
+    &[location="3"] {top: $board_size * 0.8594; left: $board_size * 0.463; transform: rotate(0.5deg);}
+    &[location="4"] {top: $board_size * 0.86; left: $board_size * 0.5536; transform: rotate(0.5deg);}
+    &[location="5"] {top: $board_size * 0.861; left: $board_size * 0.6436; transform: rotate(0.5deg);}
+
+  }
+  
+  travel[deck="true"] {
+    display: block;
+    @include card();
+    @include sprite(4, 3, $card_height, $card_width);
+    
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      background-position: 0px 0px;
+      background-image: url("img/card_back.jpg");
+      background-size: ($card_width * 2) $card_height;
+      transform: rotateY(-180deg);
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      background-size: inherit;
+      background-position: inherit;
+      background-image: url("img/travel.jpg");
+      backface-visibility: hidden;
+    }
+  }
+
+  hand travel {
+    margin: $card_margin / 2;
+    position: relative;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0);
+      pointer-events: none;
+      z-index: 2;
+      transition: background-color 0.2s;
+    }
+    
+    &[active="selected"] {
+      cursor: pointer;
+      &::before {
+        background-color: rgba(255, 57, 165, 0.4);
+        box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+      }
+    }
+
+    &[active="used"] {
+      &::before {
+        background-color: rgba(118, 118, 118, 0.4);
+      }
+    }
+  }
+
+  .bga-animations_animation-surface travel {
+    margin: 0;
+  }
+  
+  .bga-animations_animation-surface travel[active="used"] {
+    &::before {
+      content: "";
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      z-index: 2;
+      background-color: rgba(118, 118, 118, 0.4);
+    }
+  }
+}

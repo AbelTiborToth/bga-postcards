@@ -1,0 +1,56 @@
+{
+  "102": {
+    "name": "Background",
+    "values": {
+      "1": {
+        "name": "Thematic",
+        "cssPref": "thematic_background"
+      },
+      "2": {
+        "name": "BGA Default"
+      }
+    },
+    "default": 1
+  },
+
+  "103": {
+    "name": "Font",
+    "values": {
+      "1": {
+        "name": "Thematic",
+        "cssPref": "thematic_font"
+      },
+      "2": {
+        "name": "BGA Default"
+      }
+    },
+    "default": 1
+  },
+  
+  "100": {
+    "name": "Countdown timer for confirm button",
+    "values": {
+      "1": {
+        "name": "Enabled"
+      },
+      "2": {
+        "name": "Disabled"
+      }
+    },
+    "default": 1
+  },
+
+  "101": {
+    "name": "Show number of cards in decks",
+    "values": {
+      "1": {
+        "name": "Enabled"
+      },
+      "2": {
+        "name": "Disabled"
+      }
+    },
+    "default": 2,
+    "needReload": true
+  }
+}

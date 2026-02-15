@@ -1,0 +1,31 @@
+@use "../../globals" as *;
+
+$biker_size: 50px;
+
+@mixin all() {
+  
+  end_game_bonus {
+    $height: 100px;
+    $width: $height * (349.5 / 483);
+
+    display: block;
+    height: $height;
+    width: $width;
+    background-image: url("img/milestone_markers.jpg");
+    background-size: $width * 2 $height;
+    background-position: -$width;
+
+    border-radius: 27px 27px 9px 9px;
+    box-shadow: 0 0 2px black;
+  }
+    
+  board end_game_bonus {
+    position: absolute;
+    top: 790px;
+    left: 815px;
+  }
+  
+  player_area end_game_bonus {
+    margin-left: 10px;
+  }
+}
