@@ -163,7 +163,7 @@ declare class StatusBar {
     disabled?: boolean;
     tooltip?: string;
     confirm?: string | (() => string | undefined | null);
-    autoclick?: boolean | { abortSignal: AbortSignal };
+    autoclick?: boolean | { abortSignal?: AbortSignal, pausable?: boolean };
   }): HTMLButtonElement;
 
   /**

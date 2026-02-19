@@ -16,6 +16,11 @@
     .bgabutton {
       margin-left: 20px;
     }
+
+    .action-button-with-pause .action-button:not(:first-child) {
+      margin-left: 0px !important;
+    }
+
   }
-  
+
 }

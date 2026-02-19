@@ -617,12 +617,7 @@ class sConfirm {
         const autoClickPreference = this.bga.userPreferences.get(100) === 1;
         // Add confirm button with optional auto-click
         if (autoClickPreference) {
-            const abortController = new AbortController();
-            this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"), { autoclick: { abortSignal: abortController.signal } });
-            const abortButton = this.bga.statusBar.addActionButton(_("Let me think!"), () => {
-                abortButton.remove();
-                abortController.abort();
-            }, { color: 'secondary' });
+            this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"), { autoclick: { pausable: true } });
         }
         else {
             this.bga.statusBar.addActionButton(_("Confirm"), () => this.bga.actions.performAction("actConfirm"));
@@ -5414,12 +5409,13 @@ class Game {
             animationsActive: () => this.bga.gameui.bgaAnimationsActive()
         });
         // @ts-ignore - ZoomManager is not strictly typed
+        const zoomLevels = Array.from({ length: 20 }, (_, index) => 0.3 + index * 0.05);
         this.zoom = new ZoomManager({
             element: this.bga.gameArea.getElement(),
             localStorageZoomKey: 'postcards-zoom',
             zoomControls: { color: 'black' },
             smooth: false,
-            zoomLevels: [0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75]
+            zoomLevels
         });
         this.title = document.getElementById('page-title');
     }

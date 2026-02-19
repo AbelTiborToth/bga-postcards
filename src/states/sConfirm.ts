@@ -55,19 +55,10 @@ export class sConfirm {
 
 		// Add confirm button with optional auto-click
 		if (autoClickPreference) {
-			const abortController = new AbortController();
 			this.bga.statusBar.addActionButton(
 				_("Confirm"),
 				() => this.bga.actions.performAction("actConfirm"),
-				{ autoclick: {abortSignal: abortController.signal} }
-			);
-			const abortButton = this.bga.statusBar.addActionButton(
-				_("Let me think!"),
-				() => {
-					abortButton.remove();
-					abortController.abort();
-				},
-				{ color: 'secondary' }
+				{ autoclick: {pausable: true} }
 			);
 		} else {
 			this.bga.statusBar.addActionButton(
