@@ -32,5 +32,4 @@ $gameinfos = [
     'favorite_colors_support' => true,
     'disable_player_order_swap_on_rematch' => false,
     'game_interface_width' => ['min' => 900],
-    'enable_3d' => false,
 ];
