@@ -1,0 +1,109 @@
+@use "../globals" as *;
+
+$height: $postcard_width + $card_margin * 1;
+$width: $postcard_height * 4 + $card_margin * 3;
+
+@keyframes marginAnimation_postcardSupply_1 {
+  from {
+    margin: (((-($postcard_height - $postcard_width)) + $card-margin * 2) / 2)
+            (($postcard_height - $postcard_width) / 2 + ($card-margin / 2))
+            (((-($postcard_height - $postcard_width)) + $card-margin * 2) / 2)
+            (($postcard_height - $postcard_width) / 2 + ($card-margin / 2));
+  }
+  to {
+    margin: 0 0 0 0;
+  }
+}
+
+@mixin all() {
+  
+  postcard_supply {
+    position: relative;
+    height: $height;
+    width: $width;
+    margin: 10px calc(50% - $width / 2) 0 calc(50% - $width / 2);
+    
+    .bga-animations_placeholder-shrink {
+      animation-name: marginAnimation_postcardSupply_1;
+      animation-duration: 0.8s;
+    }
+  }
+
+  postcard_supply::before {
+    top: 8px;
+    left: -8px;
+    position: absolute;
+    
+    height: $postcard_width;
+    width: $postcard_height;
+    box-shadow: 0 0 2px black;
+    
+    background-color: white;
+    content: "";
+    z-index: 0 !important;
+    
+    transition: opacity 0.5s;
+    
+    opacity: 0;
+  }
+
+  postcard_supply[count="3"]::before {opacity: 1}
+
+  postcard_supply::after {
+    top: 4px;
+    left: -4px;
+    position: absolute;
+
+    height: $postcard_width;
+    width: $postcard_height;
+    box-shadow: 0 0 2px black;
+    
+    background-color: white;
+    content: "";
+    z-index: 0 !important;
+
+    transition: opacity 0.5s;
+    
+    opacity: 0;
+  }
+
+  postcard_supply[count="3"]::after,
+  postcard_supply[count="2"]::after {opacity: 1;}
+
+  postcards_counter,
+  postcards_discard_counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    
+    height: 20px;
+    width: 30px;
+    
+    box-shadow: 0 0 2px black;
+    
+    text-align: center;
+  }
+  
+  postcards_counter {
+    top: 150px;
+    left: -30px;
+    background-color: white;
+    
+    &.counter_in_progress {
+      color: #FF7B7B !important;
+    }
+  }
+
+  postcards_discard_counter {
+    top: 180px;
+    left: -30px;
+    background-color: #FF7B7B;
+
+    color: white !important;
+    &.counter_in_progress {
+      color: black !important;
+    }
+  }
+}

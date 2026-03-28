@@ -1,0 +1,54 @@
+@use "../globals" as *;
+
+
+@mixin all() {
+  
+  @keyframes marginAnimation_playerArea_1 {
+    from {margin-left: 0px;}
+    to {margin-left: 10px;}
+  }
+  
+  player_area {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: auto;
+    width: $postcard_width * 3 + $card_margin * 3;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 2px black;
+  }
+
+  player_area > * {
+    flex: 0 0 auto;
+  }
+
+  player_area itinerary {order: 1}
+  player_area player_board {order: 2}
+  player_area end_game_bonus {order: 3}
+  
+  player_area > .bga-animations_placeholder-grow {
+    order: 3;
+    animation-name: marginAnimation_playerArea_1;
+    animation-duration: 0.8s;
+  }
+
+  player_area > .bga-animations_placeholder-shrink {
+    order: 3;
+    animation-name: marginAnimation_playerArea_1;
+    animation-direction: reverse;
+    animation-duration: 0.8s;
+  }
+
+  player_area gift_player,
+  player_area postcard_player,
+  player_area bonus_actions,
+  player_area hand,
+  player_area double_actions {
+    flex-basis: 100%;
+    order: 4;
+  }
+}

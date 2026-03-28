@@ -1,0 +1,39 @@
+@use "../../../globals" as *;
+
+$size: 1px;
+
+@mixin all() {
+  stamp_space {
+    @include absolute();
+    height: $postcard_token_height - ($size);
+    width: $postcard_token_width - ($size);
+
+    border-radius: 3px;
+    
+    border-color: rgba(255, 20, 147, 0);
+    border-style: solid;
+    border-width: $size;
+
+    background-color: rgba(255, 57, 165, 0);
+
+    
+    transition: border-color 0.5s, background 0.5s;
+    
+    &[active="true"] {
+      border-color: #FF39A5;
+      background-color: rgba(255, 57, 165, 0.2);
+    }
+    &[active="true"]:hover {
+      cursor: pointer;
+      border-color: #990051;
+      background-color: rgba(255, 57, 165, 0);
+    }
+
+    &[space="1"] {top: 4px; left: 122px;}
+    &[space="2"] {top: 4px; left: 156px;}
+    &[space="3"] {top: 4px; left: 190px;}
+    &[space="4"] {top: 45px; left: 122px;}
+    &[space="5"] {top: 45px; left: 156px;}
+    &[space="6"] {top: 45px; left: 190px;}
+  }
+}

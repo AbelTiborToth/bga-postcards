@@ -1,0 +1,111 @@
+@use "../globals" as *;
+
+$camp_height: 24px;
+$camp_width: $camp_height * (609 / 544);
+
+@mixin all() {
+  
+  camp {
+    @include absolute();
+    height: $camp_height;
+    width: $camp_width;
+    background-image: url("img/camp.png");
+    filter: drop-shadow(0 0 1px black);
+    transform: rotate(0deg);
+
+    @include player_color_sprite($camp_height, $camp_width);
+  }
+  
+  player_board camp {
+    &[location="1"] {top: 46px;; left: 5px; transform: rotate(90deg);}
+    &[location="2"] {top: 79.7px; left: 5px; transform: rotate(90deg);}
+    &[location="3"] {top: 106px; left: 16px; transform: rotate(45deg);}
+    &[location="4"] {top: 119px; left: 42px;}
+    &[location="5"] {top: 119px; left: 75.5px;}
+    &[location="6"] {top: 119px; left: 109.5px;}
+    &[location="7"] {top: 119px; left: 144px;}
+    &[location="8"] {top: 119px; left: 178.5px;}
+    &[location="9"] {top: 119px; left: 213px;}
+    &[location="10"] {top: 106px; left: 238px; transform: rotate(-45deg);}
+    &[location="11"] {top: 80px; left: 250px; transform: rotate(-90deg);}
+    &[location="12"] {top: 46px; left: 250px; transform: rotate(-90deg);}
+    &[location="13"] {top: 12px; left: 250px; transform: rotate(-90deg);}
+  }
+  
+  board camp {
+    z-index: 20;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.1;
+    }
+    
+    &[region="1"][campsite="1"] {top: 190.7px + 0.5px; left: 417.9px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="1"][campsite="2"] {top: 220.7px + 0.5px; left: 400.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="1"][campsite="3"] {top: 222.9px + 0.5px; left: 471.6px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="2"][campsite="1"] {top: 51.3px + 0.5px; left: 383.3px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="2"][campsite="2"] {top: 62.7px + 0.5px; left: 464.7px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="2"][campsite="3"] {top: 100px + 0.5px; left: 379.4px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="2"][campsite="4"] {top: 128.7px + 0.5px; left: 489.2px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="2"][campsite="5"] {top: 153px + 0.5px; left: 416.2px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="3"][campsite="1"] {top: 163px + 0.5px; left: 554.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="3"][campsite="2"] {top: 193.5px + 0.5px; left: 693px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="3"][campsite="3"] {top: 221.4px + 0.5px; left: 523.2px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="3"][campsite="4"] {top: 237px + 0.5px; left: 673.2px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="4"][campsite="1"] {top: 296.3px + 0.5px; left: 498px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="4"][campsite="2"] {top: 296.3px + 0.5px; left: 633px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="4"][campsite="3"] {top: 367.5px + 0.5px; left: 526px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="4"][campsite="4"] {top: 367.5px + 0.5px; left: 613px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="5"][campsite="1"] {top: 413px + 0.5px; left: 480.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="5"][campsite="2"] {top: 424px + 0.5px; left: 646px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="5"][campsite="3"] {top: 494px + 0.5px; left: 480.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="5"][campsite="4"] {top: 520.3px + 0.5px; left: 558.9px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="5"][campsite="5"] {top: 502px + 0.5px; left: 619.7px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="6"][campsite="1"] {top: 531.6px + 0.5px; left: 658.1px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="6"][campsite="2"] {top: 557.5px + 0.5px; left: 692.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="6"][campsite="3"] {top: 624px + 0.5px; left: 596px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="6"][campsite="4"] {top: 598px + 0.5px; left: 696.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="7"][campsite="1"] {top: 652.4px + 0.5px; left: 714.1px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="7"][campsite="2"] {top: 628px + 0.5px; left: 770.9px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="7"][campsite="3"] {top: 713px + 0.5px; left: 739px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="7"][campsite="4"] {top: 745.5px + 0.5px; left: 732px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="8"][campsite="1"] {top: 565.1px + 0.5px; left: 406.1px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="8"][campsite="2"] {top: 561px + 0.5px; left: 506.5px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="8"][campsite="3"] {top: 628px + 0.5px; left: 510px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="8"][campsite="4"] {top: 699px + 0.5px; left: 344.6px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="8"][campsite="5"] {top: 661.2px + 0.5px; left: 388px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="8"][campsite="6"] {top: 680px + 0.5px; left: 453px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="9"][campsite="1"] {top: 440.3px + 0.5px; left: 408px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="9"][campsite="2"] {top: 526.7px + 0.5px; left: 284px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="9"][campsite="3"] {top: 561px + 0.5px; left: 338.1px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="9"][campsite="4"] {top: 604px + 0.5px; left: 251px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="9"][campsite="5"] {top: 658.8px + 0.5px; left: 238.1px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="10"][campsite="1"] {top: 254px + 0.5px; left: 371px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="10"][campsite="2"] {top: 351px + 0.5px; left: 366px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="10"][campsite="3"] {top: 367px + 0.5px; left: 427px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="11"][campsite="1"] {top: 270px + 0.5px; left: 265px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="11"][campsite="2"] {top: 286px + 0.5px; left: 312px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="11"][campsite="3"] {top: 329.5px + 0.5px; left: 202.7px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="11"][campsite="4"] {top: 367px + 0.5px; left: 230.7px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="11"][campsite="5"] {top: 406.5px + 0.5px; left: 225px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="12"][campsite="1"] {top: 262px + 0.5px; left: 46px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="12"][campsite="2"] {top: 246.8px + 0.5px; left: 185.3px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="12"][campsite="3"] {top: 318px + 0.5px; left: 138px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="12"][campsite="4"] {top: 283px + 0.5px; left: 208px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+
+    &[region="13"][campsite="1"] {top: 176px + 0.5px; left: 248px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="13"][campsite="2"] {top: 150px + 0.5px; left: 306px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="13"][campsite="3"] {top: 215px + 0.5px; left: 241px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+    &[region="13"][campsite="4"] {top: 166px + 0.5px; left: 351px - (($camp_width - $campsite_width) / 2) + 0.5px;}
+  }
+}

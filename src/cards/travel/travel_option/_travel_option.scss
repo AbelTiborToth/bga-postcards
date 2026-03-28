@@ -1,0 +1,45 @@
+@use "../../../globals" as *;
+
+$size: 41.5px;
+
+@mixin all() {
+  
+  travel_option {
+    background-image: url("img/travel_option.jpg");
+    
+    height: $size;
+    width: $size;
+
+    display: block;
+    
+    @include sprite(4, 2, $size, $size);
+    
+    z-index: 3;
+    
+    border-radius: ($size / 2) ($size / 2) ($size / 2) ($size / 2);
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0));
+  }
+  
+  travel travel_option {
+    position: absolute;
+    &[type="1"], &[type="2"], &[type="3"] {top: 36px; left: 16px;}
+    &[type="4"], &[type="5"], &[type="6"], &[type="7"], &[type="8"] {top: 81px; left: 16px;}
+    &:hover {cursor: pointer;}
+    
+    @keyframes show {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+    
+    animation: show 200ms linear 1 forwards;
+    
+    transition: box-shadow 0.2s;
+    
+    box-shadow : 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+
+    &:hover {
+      cursor     : pointer;
+      box-shadow : 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+    }
+  }
+}

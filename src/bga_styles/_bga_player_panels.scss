@@ -1,0 +1,72 @@
+@mixin all() {
+
+  &.thematic_background {
+    .player-board {
+      background-color: #f8f8f8;
+    }
+  }
+
+  .player-board {
+    .player_score {
+      display: flex;
+      align-items: center;
+    }
+    
+    .fa-star:before {
+      content: "";
+      display: inline-block;
+      justify-self: center;
+      margin: 0 2px 0 2px;
+      height: 20px;
+      width: 20px;
+      background-image: url("img/star.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .player-board-game-specific-content {
+      display: flex;
+      flex-direction: row;
+      margin-top: 5px;
+      align-items: center;
+
+      
+      sent_postcards_counter {
+        margin-left: 3px;
+      }
+
+      sent_postcards_icon {
+        display: block;
+        height: 40px;
+        width: 55px;
+        background-image: url(img/itinerary.jpg);
+        background-size: 1482px auto;
+        background-position: -69px -174px;
+        border-radius: 6px 6px 6px 6px;
+        box-shadow: 0 0 2px black;
+        margin-left: 5px;
+      }
+      
+      first_player_marker {
+        $first_player_height: 70px;
+        $first_player_width: $first_player_height * (349.5 / 483);
+        
+        display: block;
+        height: $first_player_height;
+        width: $first_player_width;
+        background-image: url("img/milestone_markers.jpg");
+        background-size: $first_player_width * 2 $first_player_height;
+        margin-left: 10px;
+        
+        border-radius: 20px 20px 7px 7px;
+        box-shadow: 0 0 2px black;
+      }
+    }
+  
+  }
+
+  #player_boards {
+    margin-bottom: 6px;
+  }
+}

@@ -1,0 +1,87 @@
+@use "../globals" as *;
+
+@mixin all() {
+
+  board {
+    display: block;
+    position: relative;
+    height: $board_size;
+    width: $board_size;
+    background-image: url("img/board.jpg");
+    background-size: $board_size $board_size;
+    border-radius: 10px;
+    box-shadow: 0 0 3px black;
+    z-index: 1;
+    
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 36px;
+      left: 50px;
+      height: 749px;
+      width: 749px;
+      transform: rotate(-0.4deg);
+      z-index: 4;
+      background-color: #FCFBE3;
+      mask-image: url('img/svg/region_lines.svg');
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      pointer-events: none;
+    }
+  }
+  
+  stamp_supply {
+    @include absolute();
+    top: 566px;
+    left: 120px;
+  }
+
+  travels_counter,
+  travels_discard_counter,
+  gifts_counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 9;
+
+    height: 20px;
+    width: 30px;
+
+    box-shadow: 0 0 2px black;
+
+    text-align: center;
+  }
+
+  travels_counter {
+    top: 805px;
+    left: 75px;
+    background-color: white;
+
+    &.counter_in_progress {
+      color: #FF7B7B !important;
+    }
+  }
+
+  travels_discard_counter {
+    top: 835px;
+    left: 75px;
+    background-color: #FF7B7B;
+
+    color: white !important;
+    &.counter_in_progress {
+      color: black !important;
+    }
+  }
+
+  gifts_counter {
+    top: 77px;
+    left: 738px;
+    background-color: white;
+
+    &.counter_in_progress {
+      color: #FF7B7B !important;
+    }
+  }
+}

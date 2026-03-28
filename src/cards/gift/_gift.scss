@@ -1,0 +1,82 @@
+@use "../../globals" as *;
+
+@mixin all() {
+  
+  gift {
+    background-image: url("img/gift.jpg");
+    
+    @include absolute();
+    @include card();
+    @include sprite(5, 3, $card_height, $card_width);
+
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 9;
+    
+    &:hover {
+      transform: scale(2) rotate(0deg) !important;
+      z-index: 10;
+    }
+
+    &[active="true"] {
+      box-shadow: 1px 1px 2px rgba(255, 57, 165, 1), -1px 1px 2px rgba(255, 57, 165, 1), 1px -1px 2px rgba(255, 57, 165, 1), -1px -1px 2px rgba(255, 57, 165, 1);
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgba(153, 0, 81, 1), -2px 2px 2px rgba(153, 0, 81, 1), 2px -2px 2px rgba(153, 0, 81, 1), -2px -2px 2px rgba(153, 0, 81, 1);
+      }
+    }
+    
+  }
+  
+  gift[deck="true"] {
+    display: block;
+    @include card();
+    @include sprite(5, 3, $card_height, $card_width);
+    
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      background-image: url("img/card_back.jpg");
+      background-size: ($card_width * 2) $card_height;
+      background-position: -$card_width;
+      transform: rotateY(-180deg);
+    }
+    
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: $card_height;
+      width: $card_width;
+      border-radius: 5px;
+      background-size: inherit;
+      background-position: inherit;
+      background-image: url("img/gift.jpg");
+      backface-visibility: hidden;
+    }
+  }
+  
+  board {
+    gift {
+      &[deck="true"] {top: 29px; left: 765px;}
+      &[location="1"] {top: $board_size * 0.167; left: $board_size * 0.861; transform: rotate(-5.5deg);}
+      &[location="2"] {top: $board_size * 0.3038; left: $board_size * 0.87; transform: rotate(-4.5deg);}
+      &[location="3"] {top: $board_size * 0.4427; left: $board_size * 0.881; transform: rotate(-4deg);}
+    }
+  }
+  
+  gift_player {
+    gift {
+      position: relative;
+      margin: $card_margin / 2;
+    }
+  }
+
+}
